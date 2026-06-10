@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richa Choudhary · Ingénieure Pédagogique &amp; Conceptrice Numérique</title>
+<meta name="description" content="Richa Choudhary — Ingénieure pédagogique et conceptrice numérique. Conception e-learning, serious games, MOOC, SCORM, H5P. Master 2 Rennes 2. Disponible septembre 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --rose:#C97B7B; --rose-p:#EFC0BC; --rose-c:#F6E8E7;
+  --sable:#F2EDE4; --iv:#FAF7F2;
+  --vert:#5E6623; --vp:#A0AB88; --bx:#893941; --or:#C9A84C;
+  --bleu:#03305A; --vgb:#1B3A6B; --vgy:#F5C842; --vgg:#E8A020;
+  --lemon:#FAF1CA; --td:#2A1810; --tm:#5C3D35;
+  --bd:#2A1810; --bt:#F6E8E7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'DM Sans',sans-serif;background:var(--iv);color:var(--td);
+  line-height:1.6;overflow-x:hidden;position:relative;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+h1,h2,h3,h4,.serif{font-family:'Cormorant Garamond',serif}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ============ SHARED COMPONENTS ============ */
+.sl{display:flex;align-items:center;gap:0.7rem;font-size:0.63rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:1.1rem}
+.sl::before{content:"";width:30px;height:1px;background:var(--rose);opacity:0.6}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:300;line-height:1.12;margin-bottom:1.8rem;color:var(--td)}
+.st i{font-style:italic;color:var(--bx)}
+section{padding:6.5rem 4rem}
+.rv{opacity:1}
+
+.btn{display:inline-flex;align-items:center;gap:0.5rem;border-radius:50px;
+  font-family:'DM Sans',sans-serif;font-size:0.77rem;letter-spacing:0.1em;
+  text-transform:uppercase;font-weight:500;padding:0.85rem 1.7rem;
+  transition:transform 0.18s ease,box-shadow 0.18s ease}
+.btn-p{background:var(--bd);color:var(--bt);
+  box-shadow:0 6px 0 rgba(0,0,0,0.25),0 12px 28px rgba(42,24,16,0.2)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 9px 0 rgba(0,0,0,0.25),0 16px 34px rgba(42,24,16,0.24)}
+.btn-p:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(0,0,0,0.25),0 6px 14px rgba(42,24,16,0.2)}
+.btn-o{background:transparent;color:var(--td);border:1px solid rgba(42,24,16,0.32)}
+.btn-o:hover{transform:translateY(-3px);border-color:var(--bx);color:var(--bx)}
+.btn-g{background:linear-gradient(135deg,var(--vgg),var(--vgy));color:var(--td);
+  box-shadow:0 6px 0 rgba(180,120,20,0.3),0 12px 28px rgba(229,160,32,0.25)}
+.btn-g:hover{transform:translateY(-3px)}
+.btn-g:active{transform:translateY(3px);box-shadow:0 3px 0 rgba(180,120,20,0.3)}
+
+.card{background:var(--iv);border:1px solid rgba(201,123,123,0.18);border-radius:16px;
+  box-shadow:0 5px 0 rgba(42,24,16,0.08),0 12px 25px rgba(42,24,16,0.06);
+  transition:transform 0.22s ease,box-shadow 0.22s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 9px 0 rgba(42,24,16,0.1),0 18px 34px rgba(42,24,16,0.1)}
+
+/* ============ PROGRESS BAR + CURSOR ============ */
+#progress-bar{position:fixed;top:0;left:0;height:2.5px;width:0;z-index:9001;
+  background:linear-gradient(90deg,var(--vgg),var(--vgy));
+  box-shadow:0 0 8px rgba(245,200,66,0.6)}
+#cursor{position:fixed;top:0;left:0;width:11px;height:11px;border-radius:50%;
+  background:var(--vgg);mix-blend-mode:multiply;z-index:9999;
+  transform:translate(-50%,-50%);pointer-events:none}
+#cursor-ring{position:fixed;top:0;left:0;width:33px;height:33px;border-radius:50%;
+  border:1.5px solid var(--vgg);opacity:0.42;z-index:9998;
+  transform:translate(-50%,-50%);pointer-events:none}
+@media (pointer:coarse){#cursor,#cursor-ring{display:none}}
+
+/* ============ NAV ============ */
+#mainNav{position:fixed;top:0;left:0;width:100%;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 2.2rem;background:rgba(250,247,242,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(201,123,123,0.18);transition:box-shadow 0.3s ease}
+#mainNav.scrolled{box-shadow:0 4px 22px rgba(42,24,16,0.08)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--bx);
+  font-weight:600;letter-spacing:0.04em}
+.nav-links{display:flex;gap:1.7rem;list-style:none}
+.nav-links a{font-size:0.7rem;letter-spacing:0.11em;text-transform:uppercase;
+  color:var(--tm);transition:color 0.2s ease}
+.nav-links a:hover{color:var(--bx)}
+.nav-right{display:flex;align-items:center;gap:0.7rem}
+.nav-avail{display:flex;align-items:center;gap:0.45rem;font-size:0.63rem;
+  letter-spacing:0.05em;padding:0.4rem 0.85rem;border-radius:50px;
+  background:rgba(94,102,35,0.1);border:1px solid rgba(94,102,35,0.3);color:var(--vert)}
+.avail-dot{width:7px;height:7px;border-radius:50%;background:var(--vert);
+  animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(94,102,35,0.5)}
+  50%{opacity:0.7;box-shadow:0 0 0 5px rgba(94,102,35,0)}}
+.nav-btn{font-size:0.63rem;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.5rem 0.95rem;border-radius:50px;border:1px solid rgba(42,24,16,0.25);
+  color:var(--tm);transition:all 0.2s ease}
+.nav-btn:hover{border-color:var(--bx);color:var(--bx)}
+#langBtn{background:var(--bd);color:var(--bt);border:none;
+  box-shadow:0 3px 0 rgba(0,0,0,0.25);font-weight:500}
+#langBtn:hover{transform:translateY(-2px)}
+.nav-cta{background:var(--bd);color:var(--bt);font-size:0.63rem;letter-spacing:0.08em;
+  text-transform:uppercase;padding:0.5rem 1.1rem;border-radius:50px;font-weight:500}
+.hamb{display:none;flex-direction:column;gap:4px;width:26px;cursor:pointer;background:none;padding:4px}
+.hamb span{height:2px;width:100%;background:var(--td);transition:all 0.3s ease;border-radius:2px}
+.hamb.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamb.open span:nth-child(2){opacity:0}
+.hamb.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width:900px){
+  .nav-links{position:fixed;top:0;left:0;width:100%;height:100vh;
+    background:var(--iv);flex-direction:column;justify-content:center;align-items:center;
+    gap:2rem;transform:translateX(100%);transition:transform 0.35s ease;z-index:99}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.1rem}
+  .nav-avail,.nav-cta{display:none}
+  .hamb{display:flex}
+}
+
+/* ============ HERO ============ */
+#hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+  min-height:100vh;padding:8rem 4rem 4rem;position:relative;overflow:hidden;
+  background:linear-gradient(155deg,var(--rose-c) 0%,var(--sable) 45%,var(--lemon) 100%)}
+#hero::before{content:"";position:absolute;top:-10%;right:-5%;width:50%;height:60%;
+  background:radial-gradient(circle,rgba(201,123,123,0.18),transparent 70%);pointer-events:none}
+#hero::after{content:"";position:absolute;bottom:-10%;left:-5%;width:45%;height:55%;
+  background:radial-gradient(circle,rgba(245,200,66,0.16),transparent 70%);pointer-events:none}
+.hero-left{position:relative;z-index:2}
+#heroEyebrow{font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--rose);font-weight:500;margin-bottom:1.5rem;display:block}
+.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5.5rem);
+  font-weight:300;line-height:1.02;color:var(--td);margin-bottom:1.6rem}
+.hero-first{cursor:pointer;border-bottom:1px dashed rgba(137,57,65,0.3);
+  transition:opacity 0.35s ease;color:var(--bx)}
+#heroDesc{font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1rem,1.7vw,1.22rem);color:var(--tm);line-height:1.85;
+  max-width:30rem;margin-bottom:2rem}
+.lang-stack{display:flex;flex-direction:column;align-items:flex-end;gap:0.6rem;
+  margin-bottom:2.2rem}
+.lstk{display:inline-flex;align-items:center;gap:0.5rem;background:var(--bd);color:var(--bt);
+  border-radius:50px;padding:0.5rem 1rem;font-size:0.72rem;
+  box-shadow:0 4px 0 rgba(0,0,0,0.22)}
+.lstk b{font-weight:500}
+.lstk span:last-child{opacity:0.55;font-size:0.64rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-right{position:relative;z-index:1;display:flex;justify-content:center;align-items:center}
+.card-stack{position:relative;width:320px;height:400px;transition:transform 0.2s ease-out}
+.hc{position:absolute;border-radius:14px;box-shadow:0 10px 30px rgba(42,24,16,0.18);
+  display:flex;flex-direction:column;justify-content:center;padding:0.9rem 1rem;color:#fff}
+.hc-num{font-family:'Cormorant Garamond',serif;font-size:2rem;line-height:1}
+.hc-lab{font-size:0.6rem;letter-spacing:0.05em;text-transform:uppercase;opacity:0.85;margin-top:0.2rem}
+.hc-a{width:150px;height:88px;top:-10px;left:-10px;z-index:10;background:var(--vgb);animation:fl1 4s infinite ease-in-out;transform:rotate(-2deg)}
+.hc-a .hc-num{color:var(--vgy)}
+.hc-main{width:260px;height:330px;top:35px;left:30px;padding:0;overflow:hidden;
+  border-radius:16px;background:linear-gradient(160deg,var(--vert),var(--bx));
+  animation:fl2 4.5s infinite ease-in-out;z-index:5}
+.hc-main img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.hc-main .mainbar{position:absolute;bottom:0;left:0;right:0;padding:0.8rem 1rem;
+  background:linear-gradient(to top,rgba(42,24,16,0.85),transparent);color:#fff}
+.hc-main .mainbar b{font-family:'Cormorant Garamond',serif;font-size:1.05rem;display:block}
+.hc-main .mainbar span{font-size:0.6rem;opacity:0.8;letter-spacing:0.03em}
+.hc-b{width:130px;height:68px;bottom:0;right:0;background:var(--vert);
+  animation:fl3 3.8s infinite ease-in-out;transform:rotate(2.5deg);z-index:8}
+.hc-c{width:100px;height:70px;top:170px;right:-5px;background:var(--vgg);
+  animation:fl4 4.2s infinite ease-in-out;transform:rotate(3deg);z-index:9}
+.hc-d{width:130px;height:88px;bottom:95px;left:-10px;background:var(--bx);
+  animation:fl5 4.8s infinite ease-in-out;transform:rotate(-3deg);z-index:7}
+.hc-d .hc-num{color:var(--rose-p)}
+.hc-small{font-size:0.62rem;line-height:1.3;letter-spacing:0.02em}
+@keyframes fl1{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-10px)}}
+@keyframes fl2{0%,100%{transform:rotate(0deg) translateY(0)}50%{transform:rotate(0deg) translateY(-8px)}}
+@keyframes fl3{0%,100%{transform:rotate(2.5deg) translateY(0)}50%{transform:rotate(2.5deg) translateY(-12px)}}
+@keyframes fl4{0%,100%{transform:rotate(3deg) translateY(0)}50%{transform:rotate(3deg) translateY(-9px)}}
+@keyframes fl5{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-3deg) translateY(-11px)}}
+#scrollHint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:0.5rem;font-size:0.6rem;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--tm);z-index:2}
+.scroll-line{width:1px;height:34px;background:linear-gradient(to bottom,var(--tm),transparent);
+  animation:scrollPulse 1.8s infinite}
+@keyframes scrollPulse{0%{opacity:0.3;transform:scaleY(0.6)}50%{opacity:1;transform:scaleY(1)}100%{opacity:0.3;transform:scaleY(0.6)}}
+@media (max-width:900px){
+  #hero{grid-template-columns:1fr;padding:7rem 1.5rem 4rem}
+  .hero-right{display:none}
+  .lang-stack{align-items:center}
+}
+
+/* ============ VAN GOGH STRIP ============ */
+.vg-strip{position:relative;background:var(--vgb);padding:2.5rem 2rem;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.vg-strip::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0.02;
+  background:repeating-linear-gradient(45deg,var(--vgy) 0 2px,transparent 2px 14px)}
+.vg-stars{display:flex;gap:0.6rem;justify-content:center;align-items:center;position:relative;z-index:1}
+.vg-star{border-radius:50%;background:var(--vgy);box-shadow:0 0 10px var(--vgy);animation:twinkle 2.4s infinite alternate}
+.vg-star:nth-child(1){width:14px;height:14px;animation-delay:0s}
+.vg-star:nth-child(2){width:10px;height:10px;animation-delay:0.4s}
+.vg-star:nth-child(3){width:8px;height:8px;animation-delay:0.8s}
+.vg-star:nth-child(4){width:12px;height:12px;animation-delay:1.2s}
+@keyframes twinkle{from{opacity:0.4;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+.vg-quote{text-align:center;max-width:720px;font-family:'Cormorant Garamond',serif;
+  font-style:italic;font-size:1.4rem;color:var(--iv);position:relative;z-index:1;line-height:1.5}
+.vg-quote span{color:var(--vgy)}
+.vg-quote .attr{display:block;font-size:0.85rem;opacity:0.6;margin-top:0.6rem;font-style:normal}
+.vg-sub{font-style:normal;font-size:0.95rem;opacity:0.6;color:var(--iv);text-align:center;
+  position:relative;z-index:1;max-width:640px}
+
+/* ============ APROPOS ============ */
+#apropos{background:var(--sable);position:relative;overflow:hidden}
+#apropos::before{content:"॥";position:absolute;right:2%;top:10%;font-size:18rem;
+  font-family:'Cormorant Garamond',serif;color:var(--bx);opacity:0.05;pointer-events:none;line-height:1}
+.apropos-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;
+  max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.atabs{display:flex;gap:0.5rem;margin-bottom:1.4rem}
+.atab{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.4rem 0.9rem;
+  border-radius:50px;border:1px solid rgba(42,24,16,0.2);color:var(--tm);transition:all 0.2s ease}
+.atab.active{background:var(--bd);color:var(--bt);border-color:var(--bd)}
+.about-body p{margin-bottom:1.1rem;color:var(--tm);font-size:0.95rem;line-height:1.8}
+.about-body strong{color:var(--bx);font-weight:500}
+.vpills{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:1.8rem}
+.vpill{font-size:0.68rem;padding:0.4rem 0.85rem;border-radius:50px;background:var(--sable);
+  border:1px solid rgba(201,123,123,0.35);color:var(--tm);transition:all 0.2s ease}
+.vpill:hover{background:var(--rose-c)}
+.vpill.ia{background:rgba(27,58,107,0.1);border-color:rgba(27,58,107,0.35);color:var(--vgb)}
+.facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.fcard{background:var(--iv);border:1px solid rgba(201,123,123,0.18);border-radius:16px;
+  padding:1.6rem 1.3rem;box-shadow:0 5px 0 rgba(42,24,16,0.08),0 12px 25px rgba(42,24,16,0.06);
+  transition:transform 0.22s ease}
+.fcard:hover{transform:translateY(-5px)}
+.fcard:first-child{grid-column:1 / -1}
+.fcard .ic{font-size:1.35rem;margin-bottom:0.5rem}
+.fcard .val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--bx);line-height:1}
+.fcard .lab{font-size:0.67rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--tm);margin-top:0.4rem}
+@media (max-width:900px){
+  .apropos-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+
+/* ============ CONSTELLATION ============ */
+#constellation{background:var(--bleu);position:relative;overflow:hidden;text-align:center;padding:5rem 2rem}
+#constellation::before{content:"";position:absolute;top:0;left:0;width:50%;height:55%;
+  background:radial-gradient(circle,rgba(245,200,66,0.07),transparent 70%);pointer-events:none}
+#constellation::after{content:"";position:absolute;bottom:0;right:0;width:45%;height:50%;
+  background:radial-gradient(circle,rgba(201,123,123,0.05),transparent 70%);pointer-events:none}
+#constellation .sl{justify-content:center;color:var(--rose-p)}
+#constellation .sl::before{background:var(--rose-p)}
+.const-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);
+  font-weight:300;color:var(--iv);margin-bottom:0.8rem;position:relative;z-index:1}
+.const-title i{font-style:italic;color:var(--vgy)}
+#constSub{color:rgba(250,247,242,0.6);font-size:0.85rem;margin-bottom:1.6rem;position:relative;z-index:1}
+.const-legend{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-bottom:2rem;position:relative;z-index:1}
+.leg{display:flex;align-items:center;gap:0.4rem;font-size:0.64rem;color:rgba(250,247,242,0.7);letter-spacing:0.04em}
+.leg .dot{width:9px;height:9px;border-radius:50%}
+#constellationCanvas{display:block;width:100%;max-width:960px;margin:0 auto;position:relative;z-index:1;cursor:pointer}
+#starTooltip{position:fixed;background:var(--iv);border:1px solid rgba(201,123,123,0.4);
+  border-radius:14px;padding:0.8rem 1rem;max-width:230px;z-index:600;opacity:0;
+  transition:opacity 0.18s ease;pointer-events:none;box-shadow:0 10px 30px rgba(42,24,16,0.25)}
+#starName{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--td)}
+#starDesc{font-size:0.74rem;color:var(--tm);margin:0.3rem 0;line-height:1.5}
+#starLevel{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--rose)}
+
+/* ============ EXPERIENCES ============ */
+#experiences{background:var(--bleu);position:relative;overflow:hidden;color:var(--iv)}
+#experiences::before{content:"";position:absolute;top:-5%;right:-5%;width:45%;height:55%;
+  background:radial-gradient(circle,rgba(245,200,66,0.12),transparent 70%);pointer-events:none}
+#experiences .sl{color:var(--rose-p)}
+#experiences .sl::before{background:var(--rose-p)}
+#experiences .st{color:var(--iv)}
+.exp-nav{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.6rem;position:relative;z-index:1}
+.eyb{font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.45rem 1rem;
+  border-radius:50px;background:transparent;border:1px solid rgba(250,247,242,0.25);
+  color:rgba(250,247,242,0.6);transition:all 0.2s ease}
+.eyb.active{background:var(--rose);color:var(--iv);border-color:var(--rose)}
+.tl-wrap{position:relative;padding-left:1.4rem;max-width:760px;position:relative;z-index:1}
+.tl-wrap::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(to bottom,var(--rose),rgba(201,123,123,0.2))}
+.tli{position:relative;padding-left:2rem;margin-bottom:2.6rem;opacity:0;
+  transform:translateX(-18px);transition:opacity 0.5s ease,transform 0.5s ease}
+.tli::before{content:"";position:absolute;left:-1.85rem;top:6px;width:11px;height:11px;
+  border-radius:50%;background:var(--rose);box-shadow:0 0 0 4px rgba(201,123,123,0.2)}
+.tl-date{font-size:0.63rem;color:var(--rose-p);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.3rem}
+.tl-role{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--iv);line-height:1.25}
+.tl-org{font-size:0.76rem;color:rgba(250,247,242,0.5);margin:0.2rem 0 0.6rem}
+.tl-tasks{list-style:none}
+.tl-tasks li{font-size:0.84rem;color:rgba(250,247,242,0.77);line-height:1.55;padding-left:1rem;position:relative;margin-bottom:0.25rem}
+.tl-tasks li::before{content:"—";position:absolute;left:0;color:var(--rose-p)}
+@media (max-width:960px){
+  .tli{opacity:1 !important;transform:none !important}
+}
+
+/* ============ FORMATION ============ */
+#formation{background:var(--rose-c)}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;max-width:1100px;margin:0 auto}
+.fcard-d{background:var(--iv);border:1px solid rgba(201,123,123,0.18);border-radius:17px;
+  padding:1.6rem 1.4rem;box-shadow:0 5px 0 rgba(42,24,16,0.08),0 12px 25px rgba(42,24,16,0.06);
+  transition:transform 0.22s ease}
+.fcard-d:hover{transform:translateY(-5px)}
+.fcard-d .df{font-size:1.8rem;margin-bottom:0.7rem}
+.fcard-d h3{font-size:1.1rem;font-weight:600;line-height:1.3;color:var(--td);margin-bottom:0.5rem}
+.fcard-d .inst{font-size:0.78rem;color:var(--rose);font-weight:500}
+.fcard-d .yr{font-size:0.72rem;color:var(--tm);margin-top:0.3rem}
+.fcard-cert{border-color:rgba(200,160,64,0.35);
+  background:linear-gradient(160deg,var(--lemon),var(--iv));cursor:pointer}
+.fcard-cert .yr{color:var(--or);font-weight:500}
+
+/* ============ PORTFOLIO ============ */
+#portfolio{background:var(--iv)}
+.mooc-hero{position:relative;background:var(--vgb);border-radius:20px;overflow:hidden;
+  padding:2.6rem;margin-bottom:2.4rem;
+  box-shadow:0 8px 0 rgba(42,24,16,0.12),0 20px 40px rgba(27,58,107,0.25);
+  display:grid;grid-template-columns:1.4fr 1fr;gap:2.4rem;max-width:1100px;margin-left:auto;margin-right:auto}
+.mooc-hero::before{content:"";position:absolute;inset:0;opacity:0.02;pointer-events:none;
+  background:repeating-linear-gradient(45deg,#fff 0 2px,transparent 2px 16px)}
+.mooc-cat{font-size:0.6rem;color:var(--vgy);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.8rem;position:relative;z-index:1}
+.mooc-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.7rem;
+  color:var(--iv);line-height:1.2;margin-bottom:1rem;position:relative;z-index:1}
+.mooc-desc{font-size:0.86rem;color:rgba(250,247,242,0.8);line-height:1.7;margin-bottom:1.4rem;position:relative;z-index:1}
+.mooc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;margin-bottom:1.4rem;position:relative;z-index:1}
+.mooc-stats .ms b{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--vgy);display:block;line-height:1}
+.mooc-stats .ms span{font-size:0.56rem;text-transform:uppercase;letter-spacing:0.06em;color:rgba(250,247,242,0.6)}
+.mooc-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.4rem;position:relative;z-index:1}
+.mooc-tags span{font-size:0.62rem;padding:0.3rem 0.7rem;border-radius:50px;
+  background:rgba(250,247,242,0.1);color:rgba(250,247,242,0.85);border:1px solid rgba(250,247,242,0.15)}
+.mooc-mods{position:relative;z-index:1}
+.mooc-mods h4{font-size:0.72rem;color:var(--vgy);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.8rem}
+.modrow{display:flex;align-items:center;gap:0.7rem;padding:0.7rem 0.9rem;border-radius:12px;
+  background:rgba(250,247,242,0.05);margin-bottom:0.5rem;cursor:pointer;transition:all 0.2s ease;
+  color:rgba(250,247,242,0.9);font-size:0.78rem}
+.modrow:hover{transform:translateX(4px);background:rgba(250,247,242,0.12)}
+.modrow .me{font-size:1.1rem}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto}
+.proj-card{border-radius:16px;overflow:hidden;background:var(--iv);
+  border:1px solid rgba(201,123,123,0.18);box-shadow:0 5px 0 rgba(42,24,16,0.08),0 12px 25px rgba(42,24,16,0.06);
+  transition:transform 0.22s ease;cursor:pointer}
+.proj-card:hover{transform:translateY(-4px)}
+.proj-img{height:130px;position:relative;display:flex;align-items:center;justify-content:center;font-size:2.4rem;transition:filter 0.2s ease}
+.proj-card:hover .proj-img{filter:brightness(1.08)}
+.proj-img .badge{position:absolute;top:0.7rem;right:0.7rem;font-size:0.58rem;letter-spacing:0.05em;
+  text-transform:uppercase;background:rgba(42,24,16,0.6);color:#fff;padding:0.25rem 0.6rem;border-radius:50px}
+.proj-body{padding:1.1rem 1.2rem}
+.proj-body h4{font-size:1.02rem;font-weight:600;color:var(--td);margin-bottom:0.4rem;line-height:1.25}
+.proj-body p{font-size:0.78rem;color:var(--tm);line-height:1.6}
+@media (max-width:780px){
+  .mooc-hero{grid-template-columns:1fr;padding:1.8rem}
+  .mooc-stats{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ============ PROFIL REF ============ */
+#profil-ref{background:var(--bleu);position:relative;overflow:hidden;color:var(--iv)}
+#profil-ref::after{content:"✦";position:absolute;bottom:2%;right:3%;font-size:14rem;color:var(--iv);opacity:0.04;line-height:1;pointer-events:none}
+#profil-ref .sl{color:var(--rose-p)}
+#profil-ref .sl::before{background:var(--rose-p)}
+#profil-ref .st{color:var(--iv)}
+.ref-box{background:rgba(250,247,242,0.055);border:1px solid rgba(250,247,242,0.08);
+  backdrop-filter:blur(8px);border-radius:20px;padding:2.2rem;max-width:840px;margin:0 auto;position:relative;z-index:1}
+.ref-box p{color:rgba(250,247,242,0.78);font-size:0.9rem;line-height:1.95;margin-bottom:1rem}
+.ref-box p strong{color:var(--vgy);font-weight:500}
+.ref-note{font-style:italic;font-size:0.7rem;opacity:0.4;margin-top:1.2rem}
+
+/* ============ GALLERY ============ */
+#gallery{background:var(--td);position:relative;color:var(--iv)}
+#gallery::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0.008;
+  background-image:linear-gradient(rgba(255,255,255,0.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.5) 1px,transparent 1px);
+  background-size:40px 40px}
+.gallery-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.tolkien{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:1.15rem;color:rgba(250,247,242,0.45);margin-bottom:2.4rem;line-height:1.6}
+.tolkien span{color:var(--vgy)}
+.tolkien .attr{display:block;font-size:0.7rem;color:rgba(250,247,242,0.28);margin-top:0.5rem;font-style:normal}
+#gallery .sl{justify-content:center;color:var(--rose-p)}
+#gallery .sl::before{background:var(--rose-p)}
+.gal-title{text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-weight:300;font-size:clamp(2.4rem,4.5vw,3.6rem);color:var(--iv);margin-bottom:1.8rem}
+.gal-text{max-width:780px;margin:0 auto 2.6rem;background:rgba(250,247,242,0.05);
+  border:1px solid rgba(201,123,123,0.3);border-radius:18px;padding:1.8rem 2rem}
+.gal-text p{font-size:0.86rem;color:rgba(250,247,242,0.78);line-height:1.85;margin-bottom:1rem}
+.gal-pills{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:1.2rem}
+.gal-pills span{font-size:0.66rem;padding:0.35rem 0.8rem;border-radius:50px;
+  background:rgba(201,123,123,0.18);color:rgba(250,247,242,0.85);border:1px solid rgba(201,123,123,0.3)}
+.gwall{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1.8rem}
+.gframe{will-change:transform;transition:transform 0.3s ease}
+.gframe:hover{transform:scale(1.04) rotate(0deg) !important}
+.fborder{position:relative;padding:14px;background:#0e0a05}
+.fborder::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' fill='none' stroke='%23c9a84c' stroke-width='3' rx='2'/%3E%3C/svg%3E");
+  box-shadow:inset 0 0 0 3px #8b6914,inset 0 0 0 7px #c9a84c,inset 0 0 0 10px #8b6914,
+    0 0 0 2px #8b6914,0 0 0 5px #c9a84c,0 0 0 8px #8b6914;
+  border-radius:2px}
+.fb-gold{background:#0e0a05;box-shadow:0 12px 28px rgba(0,0,0,0.55)}
+.fb-dark{background:#08050a;box-shadow:0 12px 28px rgba(0,0,0,0.65)}
+.fb-rose{background:#0f0608;box-shadow:0 12px 28px rgba(0,0,0,0.55)}
+.gframe img{height:170px;width:100%;object-fit:cover;display:block}
+.gframe .gfb{height:170px;width:100%;display:none;align-items:center;justify-content:center;
+  font-size:2rem;background:linear-gradient(135deg,var(--vert),var(--bx))}
+.gcap{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.72rem;
+  color:rgba(250,247,242,0.4);text-align:center;margin-top:0.6rem}
+
+/* ============ LEXIQUE ============ */
+#lexique{background:var(--iv)}
+#lexique .st i{color:var(--bx)}
+.lex-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--tm);font-size:1.05rem;margin-bottom:2rem}
+.lex-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(200,160,64,0.12);
+  border-radius:16px;overflow:hidden;max-width:1100px;margin:0 auto}
+.lxcard{background:var(--iv);padding:1.8rem 1.5rem;transition:background 0.2s ease}
+.lxcard:hover{background:var(--rose-c)}
+.lxword{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--td);line-height:1.1}
+.lxpron{font-size:0.58rem;font-style:italic;color:var(--bx);margin:0.2rem 0}
+.lxpos{font-size:0.58rem;text-transform:uppercase;color:#999;font-style:italic;letter-spacing:0.08em;margin-bottom:0.7rem}
+.lxdef{font-size:0.78rem;color:var(--tm);line-height:1.7;margin-bottom:0.7rem}
+.lxen{font-size:0.66rem;font-style:italic;color:var(--rose)}
+@media (max-width:780px){.lex-grid{grid-template-columns:1fr}}
+
+/* ============ RATING ============ */
+#rating{background:var(--rose-c);text-align:center}
+#rating .sl{justify-content:center}
+#rating .st i{color:var(--bx)}
+.rat-sub{color:var(--tm);font-size:0.9rem;margin-bottom:1.6rem}
+#starsRow{display:flex;gap:0.5rem;justify-content:center;margin-bottom:1.2rem}
+.star-btn{font-size:2rem;filter:grayscale(1);opacity:0.38;transition:all 0.2s ease;background:none}
+.star-btn.lit{filter:none;opacity:1;transform:scale(1.1)}
+#ratMsg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--tm);
+  margin-bottom:1.2rem;min-height:1.5rem;max-width:540px;margin-left:auto;margin-right:auto}
+.rat-ta{width:100%;max-width:460px;background:var(--sable);border:1px solid rgba(201,123,123,0.3);
+  border-radius:12px;padding:0.9rem;min-height:85px;resize:vertical;font-family:inherit;font-size:0.85rem;
+  color:var(--td);margin:0 auto 1.2rem;display:block}
+.rat-ta:focus{outline:none;border-color:var(--rose)}
+#ratDone{display:none;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:var(--bx)}
+
+/* ============ CONTACT ============ */
+#contact{background:var(--sable);text-align:center;position:relative;overflow:hidden}
+#contact::before{content:"नमस्ते";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Cormorant Garamond',serif;font-size:11rem;color:var(--iv);opacity:0.5;
+  pointer-events:none;line-height:1;z-index:0}
+.contact-inner{max-width:580px;margin:0 auto;position:relative;z-index:1}
+#contact .sl{justify-content:center}
+#contact .st i{color:var(--bx)}
+#contactSub{color:var(--tm);font-size:0.92rem;line-height:1.7;margin-bottom:2rem}
+.clinks{display:flex;flex-direction:column;gap:0.9rem;align-items:center}
+.clinks .btn{min-width:280px;justify-content:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--bd);padding:2rem;text-align:center;color:rgba(250,247,242,0.6)}
+footer .l1{font-size:0.8rem}
+footer .l1 b{color:var(--rose-p);font-weight:500}
+footer .l2{font-size:0.6rem;opacity:0.4;margin-top:0.5rem}
+
+/* ============ SEARCH OVERLAY ============ */
+#search-ov{position:fixed;inset:0;z-index:200;background:rgba(42,24,16,0.9);
+  backdrop-filter:blur(12px);display:none;align-items:flex-start;justify-content:center;
+  padding-top:12vh;opacity:0;transition:opacity 0.25s ease}
+#search-ov.open{display:flex;opacity:1}
+.search-card{width:90%;max-width:580px}
+#searchInput{width:100%;padding:1.1rem 1.4rem;border-radius:50px;border:2px solid transparent;
+  background:var(--iv);font-family:inherit;font-size:1rem;color:var(--td)}
+#searchInput:focus{outline:none;border-color:var(--rose)}
+#searchResults{margin-top:1rem;max-height:50vh;overflow-y:auto}
+.sres{padding:0.9rem 1.1rem;border-radius:12px;background:rgba(250,247,242,0.08);
+  margin-bottom:0.5rem;cursor:pointer;transition:background 0.15s ease}
+.sres:hover,.sres.active{background:rgba(250,247,242,0.18)}
+.sres b{display:block;color:var(--iv);font-size:0.9rem;font-family:'Cormorant Garamond',serif}
+.sres span{font-size:0.74rem;color:rgba(250,247,242,0.6)}
+.sres mark{background:rgba(245,200,66,0.4);color:var(--iv);padding:0 2px;border-radius:2px}
+
+/* ============ MODULE POPUP ============ */
+#mod-popup{position:fixed;inset:0;z-index:300;background:rgba(42,24,16,0.85);
+  backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:1.5rem}
+#mod-popup.open{display:flex}
+.mod-card{background:var(--iv);border-radius:20px;padding:2.2rem;max-width:540px;width:100%;position:relative;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+.mod-card .mod-x{position:absolute;top:1rem;right:1.2rem;font-size:1.3rem;color:var(--tm)}
+#mod-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--bx);margin-bottom:0.8rem}
+#mod-desc{font-size:0.9rem;color:var(--tm);line-height:1.75;margin-bottom:1.2rem}
+#mod-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+#mod-tags span{font-size:0.65rem;padding:0.3rem 0.7rem;border-radius:50px;
+  background:var(--rose-c);color:var(--bx);border:1px solid rgba(201,123,123,0.3)}
+
+/* ============ CHATBOT ============ */
+#cb-btn{position:fixed;bottom:2rem;right:2rem;width:54px;height:54px;border-radius:50%;
+  background:var(--bd);color:#fff;font-size:1.4rem;z-index:500;
+  box-shadow:0 6px 0 rgba(0,0,0,0.25),0 12px 28px rgba(42,24,16,0.2);transition:transform 0.18s ease}
+#cb-btn:hover{transform:translateY(-3px)}
+#cb-panel{position:fixed;bottom:6.5rem;right:2rem;width:min(90vw,340px);max-height:460px;
+  background:var(--iv);border-radius:18px;border:1px solid rgba(201,123,123,0.3);
+  box-shadow:0 20px 50px rgba(42,24,16,0.25);z-index:501;display:none;flex-direction:column;overflow:hidden}
+#cb-panel.open{display:flex}
+.cb-head{background:var(--bd);color:#fff;padding:0.9rem 1.1rem;display:flex;align-items:center;justify-content:space-between}
+.cb-head h4{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:400}
+.cb-head span{font-size:0.58rem;opacity:0.6;display:block}
+.cb-close{color:#fff;font-size:1rem}
+.cb-body{padding:1rem;overflow-y:auto;display:flex;flex-direction:column;gap:0.6rem;min-height:160px;flex:1}
+.bubble{font-size:0.8rem;line-height:1.55;padding:0.6rem 0.85rem;max-width:88%}
+.bubble.bot{background:var(--sable);color:var(--td);align-self:flex-start;border-radius:12px 12px 12px 3px}
+.bubble.user{background:var(--bd);color:var(--iv);align-self:flex-end;border-radius:12px 12px 3px 12px}
+.cb-quick{display:flex;flex-direction:column;gap:0.4rem;margin-top:0.3rem}
+.cqb{font-size:0.72rem;text-align:left;padding:0.5rem 0.8rem;border-radius:50px;
+  background:var(--sable);border:1px solid rgba(201,123,123,0.3);color:var(--tm);transition:opacity 0.2s ease}
+.cqb.used{opacity:0.3;pointer-events:none}
+.cb-foot{display:flex;gap:0.5rem;padding:0.8rem;border-top:1px solid rgba(201,123,123,0.18)}
+.cb-inp{flex:1;padding:0.55rem 0.9rem;border-radius:50px;border:1px solid rgba(201,123,123,0.3);
+  font-family:inherit;font-size:0.8rem;color:var(--td);background:var(--iv)}
+.cb-inp:focus{outline:none;border-color:var(--rose)}
+.cb-send{width:36px;height:36px;border-radius:50%;background:var(--bd);color:#fff;flex-shrink:0;font-size:0.9rem}
+@media (max-width:600px){
+  #cb-btn{bottom:1.2rem;right:1.2rem}
+  #cb-panel{bottom:5.5rem;right:1rem}
+}
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- ============ NAV ============ -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">RC ✦</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#apropos" data-fr="À propos" data-en="About">À propos</a></li>
+    <li><a href="#constellation" data-fr="Compétences" data-en="Skills">Compétences</a></li>
+    <li><a href="#experiences" data-fr="Parcours" data-en="Experience">Parcours</a></li>
+    <li><a href="#portfolio" data-fr="Réalisations" data-en="Work">Réalisations</a></li>
+    <li><a href="#contact" data-fr="Contact" data-en="Contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <span class="nav-avail"><span class="avail-dot"></span><span data-fr="Disponible · Sep 2026" data-en="Available · Sep 2026">Disponible · Sep 2026</span></span>
+    <button class="nav-btn" onclick="openSearch()">🔍 <span data-fr="Chercher" data-en="Search">Chercher</span></button>
+    <button class="nav-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    <a href="#contact" class="nav-cta" data-fr="Contact" data-en="Contact">Contact</a>
+    <button class="hamb" id="hamb" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-left rv">
+    <span id="heroEyebrow">Ingénieure Pédagogique · Conceptrice Numérique · Développement Digital Learning</span>
+    <h1 class="hero-name"><span class="hero-first" id="heroFirst">ऋचा</span><span class="hero-last">&nbsp;Choudhary</span></h1>
+    <p id="heroDesc">Conception de modules e-learning de A à Z — serious games, formations métiers, digitalisation et modernisation de formations. Master 2 Ingénierie Pédagogique · Rennes 2 · 7 ans d'enseignement en deux pays, trois langues.</p>
+    <div class="lang-stack">
+      <span class="lstk">🇮🇳 <b>Hindi</b> <span id="langMother" data-fr="Langue maternelle" data-en="Mother tongue">Langue maternelle</span></span>
+      <span class="lstk">🇬🇧 <b>English</b> <span>C2 · IELTS</span></span>
+      <span class="lstk">🇫🇷 <b>Français</b> <span>C1 · DALF</span></span>
+    </div>
+    <div class="hero-btns">
+      <button class="btn btn-p" onclick="document.getElementById('portfolio').scrollIntoView()" data-fr="Voir mes projets ↓" data-en="View my work ↓">Voir mes projets ↓</button>
+      <button class="btn btn-o" onclick="document.getElementById('contact').scrollIntoView()" data-fr="Contact" data-en="Contact">Contact</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="card-stack" id="cardStack">
+      <div class="hc hc-a"><span class="hc-num">7+</span><span class="hc-lab" data-fr="ans d'enseignement" data-en="years teaching">ans d'enseignement</span></div>
+      <div class="hc hc-main">
+        <img src="images/hero.jpeg" alt="Richa Choudhary" onerror="this.style.display='none'">
+        <div class="mainbar"><b>Richa Choudhary</b><span>Laval · Master Rennes 2 · 2026</span></div>
+      </div>
+      <div class="hc hc-b"><span class="hc-small">🎓 ADDIE · SAM · Bloom</span></div>
+      <div class="hc hc-c"><span class="hc-small">🇮🇳🇫🇷🇬🇧<br><b data-fr="Trilingue" data-en="Trilingual">Trilingue</b></span></div>
+      <div class="hc hc-d"><span class="hc-num">3+</span><span class="hc-lab" data-fr="ans e-learning" data-en="years e-learning">ans e-learning</span></div>
+    </div>
+  </div>
+  <div id="scrollHint"><span data-fr="Défiler" data-en="Scroll">Défiler</span><span class="scroll-line"></span></div>
+</section>
+
+<!-- ============ VAN GOGH STRIP ============ -->
+<div class="vg-strip">
+  <div class="vg-stars"><span class="vg-star"></span><span class="vg-star"></span><span class="vg-star"></span><span class="vg-star"></span></div>
+  <p class="vg-quote">« Je rêve de peinture et puis je peins <span>mes rêves</span>. »<span class="attr">— Vincent van Gogh</span></p>
+  <span class="vg-sub" data-fr="Je conçois des formations et puis j'enseigne mes convictions." data-en="I design learning and then I teach my convictions.">Je conçois des formations et puis j'enseigne mes convictions.</span>
+</div>
+
+<!-- ============ APROPOS ============ -->
+<section id="apropos">
+  <div class="apropos-grid">
+    <div class="hero-left rv">
+      <div class="sl" data-fr="Qui suis-je ?" data-en="Who am I?">Qui suis-je ?</div>
+      <h2 class="st" data-fr="Qui suis-je ?" data-en="Who am I?">Qui suis-je ?</h2>
+      <div class="atabs">
+        <button class="atab active" onclick="toggleAbout('fr',this)">FR</button>
+        <button class="atab" onclick="toggleAbout('en',this)">EN</button>
+      </div>
+      <div class="about-body" id="about-fr">
+        <p>Passionnée de langues et de numérique depuis toujours — une combinaison qui m'a naturellement conduite vers l'ingénierie pédagogique. Pendant 7 ans en classe, en Inde et en France, j'ai appris à adapter mes formations aux apprenants : jeux, interactivités, parcours personnalisés. Je faisais de la gamification et de la conception sans encore nommer le domaine.</p>
+        <p>Ce parcours d'enseignante est ce qui renforce mon profil de conceptrice : pas seulement la maîtrise technique des outils, mais une compréhension réelle de ce qui fonctionne pour les apprenants. L'expérience terrain au service des formations digitales.</p>
+        <p>Avec le Master 2 Ingénierie Pédagogique de Rennes 2 et un stage chez <strong>Groupe Lactalis</strong>, je conçois avec les modèles ADDIE et SAM, la taxonomie de Bloom — je produis avec <strong>Articulate 360, Vyond, H5P</strong> — modules e-learning, serious games, formations métiers — et j'intègre l'IA générative tout au long du processus.</p>
+      </div>
+      <div class="about-body" id="about-en" style="display:none">
+        <p>I'm Richa — an instructional designer trained between Delhi and Rennes. Seven years in the classroom, across India and France, teaching French and English to adults, high schoolers and university students, in person and online. That's not a detour — it's what makes my design different.</p>
+        <p>I know what works for learners because I've lived it from the other side. I know what falls flat because I've watched it happen.</p>
+        <p>Today I design digital trainings end to end — needs analysis, scripting, production, testing, deployment. <strong>Articulate Storyline, H5P, Moodle, Vyond, Adobe Premiere</strong> — the tools are there. Generative AI is integrated into the workflow. And intercultural sensitivity comes included.</p>
+      </div>
+      <div class="vpills">
+        <span class="vpill" data-fr="Rigueur" data-en="Rigour">Rigueur</span>
+        <span class="vpill" data-fr="Créativité" data-en="Creativity">Créativité</span>
+        <span class="vpill" data-fr="Autonomie" data-en="Autonomy">Autonomie</span>
+        <span class="vpill" data-fr="Initiative" data-en="Initiative">Initiative</span>
+        <span class="vpill" data-fr="Interculturel" data-en="Intercultural">Interculturel</span>
+        <span class="vpill" data-fr="Esprit d'équipe" data-en="Team spirit">Esprit d'équipe</span>
+        <span class="vpill" data-fr="Adaptabilité" data-en="Adaptability">Adaptabilité</span>
+        <span class="vpill ia" data-fr="✦ IA générative intégrée" data-en="✦ Generative AI integrated">✦ IA générative intégrée</span>
+      </div>
+    </div>
+    <div class="facts-grid rv">
+      <div class="fcard"><div class="ic">📚</div><div class="val">7+</div><div class="lab" data-fr="ans d'enseignement FLE & ALE" data-en="years teaching FLE & ALE">ans d'enseignement FLE &amp; ALE</div></div>
+      <div class="fcard"><div class="ic">💻</div><div class="val">3+</div><div class="lab" data-fr="ans en e-learning & digital learning" data-en="years in e-learning & digital learning">ans en e-learning &amp; digital learning</div></div>
+      <div class="fcard"><div class="ic">🌏</div><div class="val">3</div><div class="lab" data-fr="langues · C2 anglais · C1 français" data-en="languages · C2 English · C1 French">langues · C2 anglais · C1 français</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSTELLATION ============ -->
+<section id="constellation">
+  <div class="sl" id="constEyebrow" data-fr="Ce que j'apporte" data-en="What I bring">Ce que j'apporte</div>
+  <h2 class="const-title" data-fr-html="Compétences <i>et outils</i>" data-en-html="Skills <i>and tools</i>">Compétences <i>et outils</i></h2>
+  <p id="constSub" data-fr="Survolez chaque étoile — chaque point est une compétence ou un outil" data-en="Hover each star to explore a skill or tool">Survolez chaque étoile — chaque point est une compétence ou un outil</p>
+  <div class="const-legend">
+    <span class="leg"><span class="dot" style="background:#F5C842"></span><span data-fr="Cœur de métier" data-en="Core craft">Cœur de métier</span></span>
+    <span class="leg"><span class="dot" style="background:#EFC0BC"></span><span data-fr="Méthodologies" data-en="Methodologies">Méthodologies</span></span>
+    <span class="leg"><span class="dot" style="background:#A0AB88"></span><span data-fr="Outils d'auteur" data-en="Authoring tools">Outils d'auteur</span></span>
+    <span class="leg"><span class="dot" style="background:#5E8A7B"></span><span>LMS</span></span>
+    <span class="leg"><span class="dot" style="background:#C9A84C"></span><span data-fr="Vidéo" data-en="Video">Vidéo</span></span>
+    <span class="leg"><span class="dot" style="background:#E8A020"></span><span data-fr="Spécialités" data-en="Specialties">Spécialités</span></span>
+  </div>
+  <canvas id="constellationCanvas"></canvas>
+</section>
+
+<div id="starTooltip"><div id="starName"></div><div id="starDesc"></div><div id="starLevel"></div></div>
+
+<!-- ============ EXPERIENCES ============ -->
+<section id="experiences">
+  <div class="sl" data-fr="Sept ans de terrain" data-en="Seven years in the field">Sept ans de terrain</div>
+  <h2 class="st" data-fr="Parcours professionnel" data-en="Professional experience">Parcours professionnel</h2>
+  <div class="exp-nav">
+    <button class="eyb active" onclick="filterExp('all',this)" data-fr="Tout" data-en="All">Tout</button>
+    <button class="eyb" onclick="filterExp('2026',this)">2026</button>
+    <button class="eyb" onclick="filterExp('2025',this)">2025</button>
+    <button class="eyb" onclick="filterExp('2023',this)">2023</button>
+    <button class="eyb" onclick="filterExp('2021',this)">2021</button>
+    <button class="eyb" onclick="filterExp('2018',this)">2018</button>
+  </div>
+  <div class="tl-wrap">
+    <div class="tli" data-year="2026">
+      <div class="tl-date">Mars 2026 — Août 2026</div>
+      <div class="tl-role" data-fr="Stagiaire — Ingénierie pédagogique & Digital Learning" data-en="Intern — Instructional Design & Digital Learning">Stagiaire — Ingénierie pédagogique &amp; Digital Learning</div>
+      <div class="tl-org">Lactalis GPO · Laval, France</div>
+      <ul class="tl-tasks">
+        <li data-fr="Digitalisation de la formation Audit Qualité Interne (modules SCORM, Articulate Storyline)" data-en="Digitalisation of Internal Quality Audit training (SCORM modules, Articulate Storyline)">Digitalisation de la formation Audit Qualité Interne (modules SCORM, Articulate Storyline)</li>
+        <li data-fr="Production et post-production vidéo pédagogique" data-en="Educational video production and post-production">Production et post-production vidéo pédagogique</li>
+        <li data-fr="Médiatisation de ressources et gamification de formations internes" data-en="Resource mediatisation and gamification of internal training">Médiatisation de ressources et gamification de formations internes</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2025">
+      <div class="tl-date">Jan. 2025 — Avr. 2025</div>
+      <div class="tl-role" data-fr="Assistante d'enseignement FLS" data-en="FLS Teaching Assistant">Assistante d'enseignement FLS</div>
+      <div class="tl-org">Lycée Bréquigny · Rennes, France</div>
+      <ul class="tl-tasks">
+        <li data-fr="Animation de séances Français Langue Secondaire pour groupes hétérogènes" data-en="Leading French as a Second Language sessions for mixed-level groups">Animation de séances Français Langue Secondaire pour groupes hétérogènes</li>
+        <li data-fr="Différenciation pédagogique et gestion de l'espace classe" data-en="Differentiated instruction and classroom management">Différenciation pédagogique et gestion de l'espace classe</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2025">
+      <div class="tl-date">Fév. 2025 — Mars 2025</div>
+      <div class="tl-role" data-fr="Stagiaire — Observation de cours FLE" data-en="Intern — FLE Classroom Observation">Stagiaire — Observation de cours FLE</div>
+      <div class="tl-org">IGR-IAE Rennes · France</div>
+      <ul class="tl-tasks">
+        <li data-fr="Observation et analyse didactique en contexte professionnel" data-en="Observation and didactic analysis in a professional context">Observation et analyse didactique en contexte professionnel</li>
+        <li data-fr="Rapport d'analyse portant sur la communication en classe" data-en="Analysis report on classroom communication">Rapport d'analyse portant sur la communication en classe</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2023">
+      <div class="tl-date">Mai 2023 — Août 2025</div>
+      <div class="tl-role" data-fr="Enseignante FLE · E-learning & enseignement à distance" data-en="FLE Teacher · E-learning & distance teaching">Enseignante FLE · E-learning &amp; enseignement à distance</div>
+      <div class="tl-org">Language Avenue · Mumbai, Inde (distanciel)</div>
+      <ul class="tl-tasks">
+        <li data-fr="Conception et animation de parcours individualisés à distance (DELF/TCF)" data-en="Design and delivery of individualised distance learning paths (DELF/TCF)">Conception et animation de parcours individualisés à distance (DELF/TCF)</li>
+        <li data-fr="Webinaires interactifs, évaluations et supports numériques" data-en="Interactive webinars, assessments and digital materials">Webinaires interactifs, évaluations et supports numériques</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2021">
+      <div class="tl-date">Oct. 2021 — Avr. 2023</div>
+      <div class="tl-role" data-fr="Assistante d'anglais" data-en="English Language Assistant">Assistante d'anglais</div>
+      <div class="tl-org">Collège Gérard Philipe · Académie d'Orléans-Tours</div>
+      <ul class="tl-tasks">
+        <li data-fr="Conception de supports pédagogiques différenciés" data-en="Design of differentiated teaching materials">Conception de supports pédagogiques différenciés</li>
+        <li data-fr="Animation du club anglais & échanges interculturels" data-en="Running the English club & intercultural exchanges">Animation du club anglais &amp; échanges interculturels</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2018">
+      <div class="tl-date">Mars 2018 — Août 2019</div>
+      <div class="tl-role" data-fr="Enseignante FLE" data-en="FLE Teacher">Enseignante FLE</div>
+      <div class="tl-org">Le FreHindi · New Delhi, Inde</div>
+      <ul class="tl-tasks">
+        <li data-fr="Enseignement FLE niveaux A1 à B1 (CECRL)" data-en="FLE teaching, levels A1 to B1 (CEFR)">Enseignement FLE niveaux A1 à B1 (CECRL)</li>
+        <li data-fr="Club Français, Semaine Francophone, concours SpellBee" data-en="French Club, Francophone Week, SpellBee competition">Club Français, Semaine Francophone, concours SpellBee</li>
+      </ul>
+    </div>
+    <div class="tli" data-year="2018">
+      <div class="tl-date">Oct. 2018 — Déc. 2021</div>
+      <div class="tl-role" data-fr="Bénévole · Soutien pédagogique" data-en="Volunteer · Educational support">Bénévole · Soutien pédagogique</div>
+      <div class="tl-org">Make a Difference · New Delhi, Inde</div>
+      <ul class="tl-tasks">
+        <li data-fr="Ateliers pédagogiques pour jeunes en situation de précarité" data-en="Educational workshops for at-risk youth">Ateliers pédagogiques pour jeunes en situation de précarité</li>
+        <li data-fr="Encadrement et tutorat de bénévoles enseignants" data-en="Mentoring and tutoring of volunteer teachers">Encadrement et tutorat de bénévoles enseignants</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMATION ============ -->
+<section id="formation">
+  <div class="sl" data-fr="Études" data-en="Education">Études</div>
+  <h2 class="st"><span data-fr="Formation &" data-en="Education &">Formation &amp;</span> <i data-fr="diplômes" data-en="degrees">diplômes</i></h2>
+  <div class="fgrid">
+    <div class="fcard-d" onclick="openCfg('diplomeM2')" style="cursor:pointer"><div class="df">🇫🇷</div><h3>Master 2 — Didactique des langues, Numérique &amp; Ingénierie Pédagogique (FLE/ALE)</h3><div class="inst">Université de Rennes 2</div><div class="yr">2024–2026 · <span style="color:var(--or)">📄 Voir le diplôme →</span></div></div>
+    <div class="fcard-d" onclick="openCfg('diplomeMA')" style="cursor:pointer"><div class="df">🇮🇳</div><h3 data-fr="Master Arts — Langue & Études françaises" data-en="Master of Arts — French Language & Studies">Master Arts — Langue &amp; Études françaises</h3><div class="inst">Université de Delhi</div><div class="yr">2021 · <span style="color:var(--or)">📄 Voir le diplôme →</span></div></div>
+    <div class="fcard-d" onclick="openCfg('diplomeLicence')" style="cursor:pointer"><div class="df">📖</div><h3 data-fr="Licence Arts — Littérature anglaise" data-en="Bachelor of Arts — English Literature">Licence Arts — Littérature anglaise</h3><div class="inst">Université de Delhi</div><div class="yr">2019 · <span style="color:var(--or)">📄 Voir le diplôme →</span></div></div>
+    <div class="fcard-d" onclick="openCfg('diplomeGNIIT')" style="cursor:pointer"><div class="df">💻</div><h3>GNIIT Software Engineering — Java, HTML5, Web Dev, UX</h3><div class="inst">NIIT · New Delhi</div><div class="yr">2019 · <span style="color:var(--or)">📄 Voir le diplôme →</span></div></div>
+    <div class="fcard-d" onclick="openCfg('diplomeDalf')" style="cursor:pointer"><div class="df">🎖️</div><h3 data-fr="Diplôme avancé de langue française" data-en="Advanced Diploma in French Language">Diplôme avancé de langue française</h3><div class="inst">Université de Delhi</div><div class="yr">2017 · <span style="color:var(--or)">📄 Voir le diplôme →</span></div></div>
+    <div class="fcard-d fcard-cert" onclick="openDrive()" style="cursor:pointer"><div class="df">📂</div><h3 data-fr="Autres certifications & formations" data-en="Other certifications & training">Autres certifications &amp; formations</h3><div class="inst" data-fr="Cliquer pour accéder · Google Drive" data-en="Click to access · Google Drive">Cliquer pour accéder · Google Drive</div><div class="yr" data-fr="Voir le dossier →" data-en="View folder →">Voir le dossier →</div></div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section id="portfolio">
+  <div class="sl" data-fr="Réalisations" data-en="Work">Réalisations</div>
+  <h2 class="st"><span data-fr="Projets &" data-en="Projects &">Projets &amp;</span> <i data-fr="créations" data-en="creations">créations</i></h2>
+  <div class="mooc-hero">
+    <div>
+      <div class="mooc-cat">MOOC · E-Learning · Gamification · Serious Game · H5P</div>
+      <h3 class="mooc-title">Responding to Fire: Language, Action, and Awareness</h3>
+      <p class="mooc-desc" data-fr="MOOC autonome pour apprenants B2 en anglais sur la communication en situation d'urgence. Conduite du projet de A à Z : scénarisation des 5 modules, conception visuelle, gamification — carte de progression, guide Ember, badges, escape game musée → simulation d'appel d'urgence IA. Déployé sur Moodle, Université de Rennes 2." data-en="Self-paced MOOC for B2 English learners on emergency communication. Led end to end: scripting of the 5 modules, visual design, gamification — progression map, Ember guide, badges, museum escape game → AI emergency-call simulation. Deployed on Moodle, Université de Rennes 2.">MOOC autonome pour apprenants B2 en anglais sur la communication en situation d'urgence. Conduite du projet de A à Z : scénarisation des 5 modules, conception visuelle, gamification — carte de progression, guide Ember, badges, escape game musée → simulation d'appel d'urgence IA. Déployé sur Moodle, Université de Rennes 2.</p>
+      <div class="mooc-stats">
+        <div class="ms"><b>69</b><span data-fr="apprenants" data-en="learners">apprenants</span></div>
+        <div class="ms"><b>5</b><span data-fr="modules" data-en="modules">modules</span></div>
+        <div class="ms"><b>4.7</b><span data-fr="/ 5 design" data-en="/ 5 design">/ 5 design</span></div>
+        <div class="ms"><b>3</b><span data-fr="cycles révision" data-en="review cycles">cycles révision</span></div>
+      </div>
+      <div class="mooc-tags">
+        <span>Articulate Storyline</span><span>H5P</span><span>Moodle SCORM</span><span>Gamification</span><span>Escape Game</span><span>ADDIE</span><span>Guardian Angels Programme</span>
+      </div>
+      <a class="btn btn-g" href="mooc.html" data-fr="Voir le cours en ligne →" data-en="View course online →">Voir le cours en ligne →</a>
+    </div>
+    <div class="mooc-mods">
+      <h4 data-fr="↓ Explorez les modules" data-en="↓ Explore the modules">↓ Explorez les modules</h4>
+      <div class="modrow" onclick="openModule(0)"><span class="me">🔍</span><span data-fr="Module 1 · Discover — Jeux de vocabulaire & mise en ambiance" data-en="Module 1 · Discover — Vocabulary games & scene-setting">Module 1 · Discover — Jeux de vocabulaire</span></div>
+      <div class="modrow" onclick="openModule(1)"><span class="me">🧯</span><span data-fr="Module 2 · Understand — Types de feux, extincteurs & verbes modaux" data-en="Module 2 · Understand — Fire types, extinguishers & modal verbs">Module 2 · Understand — Types de feux</span></div>
+      <div class="modrow" onclick="openModule(2)"><span class="me">🎮</span><span data-fr="Module 3 · Apply — Escape game musée + simulation urgence IA" data-en="Module 3 · Apply — Museum escape game + AI emergency sim">Module 3 · Apply — Escape game + IA</span></div>
+      <div class="modrow" onclick="openModule(3)"><span class="me">🎙️</span><span data-fr="Module 4 · Analyse — Témoignages & 3e conditionnel" data-en="Module 4 · Analyse — Testimonies & 3rd conditional">Module 4 · Analyse — Témoignages</span></div>
+      <div class="modrow" onclick="openModule(4)"><span class="me">🏆</span><span data-fr="Module 5 · Evaluate — Mission-jeu finale, badge & certificat" data-en="Module 5 · Evaluate — Final game-mission, badge & certificate">Module 5 · Evaluate — Mission finale</span></div>
+    </div>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--vert),var(--vp))">🎮<span class="badge">Articulate Storyline</span></div>
+      <div class="proj-body"><h4 data-fr="Audit Qualité — Module SCORM" data-en="Quality Audit — SCORM Module">Audit Qualité — Module SCORM</h4><p data-fr="Digitalisation et gamification d'une formation qualité industrielle chez Lactalis." data-en="Digitalisation and gamification of an industrial quality training at Lactalis.">Digitalisation et gamification d'une formation qualité industrielle chez Lactalis.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('canvaPecha')">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--bx),var(--vgb))">🌐<span class="badge">Télécollaboration · Pecha Kucha</span></div>
+      <div class="proj-body"><h4>FLE Distance × DistutoLang Teamcher</h4><p data-fr="Télécollaboration France × URI Rhode Island (Lead Teacher IVSC) + présentation Pecha Kucha sur l'innovation pédagogique à distance." data-en="France × URI Rhode Island telecollaboration (IVSC Lead Teacher) + Pecha Kucha presentation on distance learning innovation.">Télécollaboration France × URI Rhode Island (Lead Teacher IVSC) + présentation Pecha Kucha sur l'innovation pédagogique à distance.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('parcoursHumour')">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--or),var(--vert))">😄<span class="badge">Canva · Jeu pédagogique</span></div>
+      <div class="proj-body"><h4>Parcours d'Humour</h4><p data-fr="Jeu pédagogique conçu sur Canva — parcours interactif autour de l'humour comme levier d'apprentissage." data-en="Educational game designed on Canva — interactive journey using humour as a learning lever.">Jeu pédagogique conçu sur Canva — parcours interactif autour de l'humour comme levier d'apprentissage.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('youtubeBeyond')">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--or),var(--vgy))">🎬<span class="badge">YouTube</span></div>
+      <div class="proj-body"><h4>Beyond Binary</h4><p data-fr="Production vidéo — projet documentaire." data-en="Video production — documentary project.">Production vidéo — projet documentaire.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('canvaPeople')">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--rose),var(--rose-p))">📖<span class="badge">Canva</span></div>
+      <div class="proj-body"><h4>People, Please! Magazine</h4><p data-fr="Conception éditoriale et design visuel." data-en="Editorial design and visual layout.">Conception éditoriale et design visuel.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('mddlrUrl')">
+      <div class="proj-img" style="background:linear-gradient(135deg,var(--vert),var(--bx))">📺</div>
+      <div class="proj-body"><h4 data-fr="Vidéos promotionnelles MDDLR" data-en="MDDLR Promotional Videos">Vidéos promotionnelles MDDLR</h4><p data-fr="Conception et montage de vidéos promotionnelles." data-en="Design and editing of promotional videos.">Conception et montage de vidéos promotionnelles.</p></div>
+    </div>
+    <div class="proj-card" onclick="openCfg('podcastUrl')">
+      <div class="proj-img" style="background:linear-gradient(135deg,#4a2f1a,#2a1810)">🎙️</div>
+      <div class="proj-body"><h4>Podcast Épicerie Gratuite</h4><p data-fr="Production audio — projet associatif." data-en="Audio production — community project.">Production audio — projet associatif.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFIL REF ============ -->
+<section id="profil-ref">
+  <div class="sl" data-fr="Document de référence" data-en="Reference document">Document de référence</div>
+  <h2 class="st"><span data-fr="Profil complet" data-en="Full profile">Profil complet</span> <i data-fr="pour recruteurs" data-en="for recruiters">pour recruteurs</i></h2>
+  <div class="ref-box">
+    <p><strong data-fr="Qui suis-je ?" data-en="Who am I?">Qui suis-je ?</strong> <span data-fr="Ingénieure pédagogique et conceptrice numérique, diplômée d'un Master 2 en Didactique des langues, Numérique et Ingénierie Pédagogique (FLE/ALE), Université de Rennes 2 (2024–2026). 7 ans d'expérience en enseignement FLE et anglais, dont 3 ans en e-learning et enseignement à distance." data-en="Instructional designer and digital learning designer, holding a Master 2 in Language Didactics, Digital and Instructional Design (FLE/ALE), Université de Rennes 2 (2024–2026). 7 years' experience teaching French and English, including 3 years in e-learning and distance education.">Ingénieure pédagogique et conceptrice numérique, diplômée d'un Master 2 en Didactique des langues, Numérique et Ingénierie Pédagogique (FLE/ALE), Université de Rennes 2 (2024–2026). 7 ans d'expérience en enseignement FLE et anglais, dont 3 ans en e-learning et enseignement à distance.</span></p>
+    <p><strong data-fr="Méthodologies" data-en="Methodologies">Méthodologies</strong> : ADDIE · SAM · Bloom · Gagné · Scaffolding · Mayer · CECRL/CEFR</p>
+    <p><strong data-fr="Outils" data-en="Tools">Outils</strong> : Articulate Storyline 360 &amp; Rise · Vyond · Genially · Canva · H5P · Wix · Adobe Premiere, Firefly, Illustrator · Filmora · Audacity · Camtasia · Moodle · WorkAdventure · BlendedX · Microsoft 365 · Google Workspace · ELAN · PRAAT</p>
+    <p><strong data-fr="Langues" data-en="Languages">Langues</strong> : <span data-fr="Hindi (maternelle) · Anglais C2 (IELTS) · Français C1 (DALF)" data-en="Hindi (native) · English C2 (IELTS) · French C1 (DALF)">Hindi (maternelle) · Anglais C2 (IELTS) · Français C1 (DALF)</span></p>
+    <p><strong data-fr="Disponibilité" data-en="Availability">Disponibilité</strong> : <span data-fr="CDI, CDD, alternance — corporate et académique. Disponible mi-septembre 2026. Télétravail et mobilité France." data-en="Permanent, fixed-term or apprenticeship contracts — corporate and academic. Available mid-September 2026. Remote and mobility across France.">CDI, CDD, alternance — corporate et académique. Disponible mi-septembre 2026. Télétravail et mobilité France.</span></p>
+    <p class="ref-note" data-fr="⚠️ Document de référence interne — merci de signaler toute correction via le chatbot." data-en="⚠️ Internal reference document — please flag any correction via the chatbot.">⚠️ Document de référence interne — merci de signaler toute correction via le chatbot.</p>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="gallery-inner">
+    <p class="tolkien">« Not all those who wander are <span>lost</span>. »<span class="attr">— J.R.R. Tolkien, The Fellowship of the Ring</span></p>
+    <div class="sl" data-fr="Galerie" data-en="Gallery">Galerie</div>
+    <h2 class="gal-title"><i>Art of the Ordinary</i></h2>
+    <div class="gal-text">
+      <p id="galText1" data-fr="Voyager, c'est apprendre à lire le monde autrement. Une icône, un geste, une couleur — leur sens varie d'une culture à l'autre. Cette réalité, vécue entre l'Inde et la France, nourrit directement la conception pédagogique : comprendre que le même contenu peut être reçu différemment selon les contextes socioculturels des apprenants, c'est concevoir des formations plus justes, plus efficaces, plus universelles." data-en="To travel is to learn to read the world differently. An icon, a gesture, a colour — their meaning shifts from one culture to another. This reality, lived between India and France, directly informs instructional design: understanding that the same content can be received differently depending on learners' sociocultural contexts means designing more equitable, more effective, more universal training.">Voyager, c'est apprendre à lire le monde autrement. Une icône, un geste, une couleur — leur sens varie d'une culture à l'autre. Cette réalité, vécue entre l'Inde et la France, nourrit directement la conception pédagogique : comprendre que le même contenu peut être reçu différemment selon les contextes socioculturels des apprenants, c'est concevoir des formations plus justes, plus efficaces, plus universelles.</p>
+      <p id="galText2" data-fr="La perspective interculturelle n'est pas un bonus — c'est une compétence de conception. Elle permet de choisir les bons exemples, les bonnes images, le bon ton pour chaque public." data-en="Intercultural perspective is not a bonus — it is a design competency. It guides the choice of the right examples, the right images, the right tone for each audience.">La perspective interculturelle n'est pas un bonus — c'est une compétence de conception. Elle permet de choisir les bons exemples, les bonnes images, le bon ton pour chaque public.</p>
+      <div class="gal-pills">
+        <span data-fr="🎨 Sensibilité visuelle → design" data-en="🎨 Visual sensitivity → design">🎨 Sensibilité visuelle → design</span>
+        <span data-fr="🌍 Mobilité interculturelle → télécollaboration" data-en="🌍 Intercultural mobility → telecollaboration">🌍 Mobilité interculturelle → télécollaboration</span>
+        <span data-fr="🏛️ Curiosité → analyse des besoins" data-en="🏛️ Curiosity → needs analysis">🏛️ Curiosité → analyse des besoins</span>
+        <span data-fr="👁️ Regard observateur → didactique terrain" data-en="👁️ Observant eye → field didactics">👁️ Regard observateur → didactique terrain</span>
+      </div>
+    </div>
+    <div class="gwall" id="gwall"></div>
+  </div>
+</section>
+
+<!-- ============ LEXIQUE ============ -->
+<section id="lexique">
+  <div class="sl" data-fr="Terminologie" data-en="Terminology">Terminologie</div>
+  <h2 class="st"><span>Lexique</span> <i>FR · EN</i></h2>
+  <p class="lex-sub" data-fr="Les mots entre les deux langues — définis dans l'autre." data-en="Words between two languages — defined in the other.">Les mots entre les deux langues — définis dans l'autre.</p>
+  <div class="lex-grid">
+    <div class="lxcard">
+      <div class="lxword">instructional designer</div>
+      <div class="lxpron">/ également : ingénieure pédagogique /</div>
+      <div class="lxpos">nom, profession</div>
+      <div class="lxdef">Conceptrice qui analyse les besoins, scénarise, produit et évalue des dispositifs de formation — e-learning, MOOC, serious games. Allie rigueur pédagogique et maîtrise des outils auteurs pour transformer des objectifs d'apprentissage en expériences digitales efficaces.</div>
+      <div class="lxen">→ ingénieure pédagogique · learning engineer</div>
+    </div>
+    <div class="lxcard">
+      <div class="lxword">conceptrice numérique</div>
+      <div class="lxpron">/ kɔ̃.sɛp.tʁis ny.me.ʁik /</div>
+      <div class="lxpos">nom, féminin</div>
+      <div class="lxdef">Digital content designer who transforms learning objectives into interactive, multimedia-rich experiences — from storyboard to SCORM deployment. The technical arm of instructional design, fluent in both pedagogy and production.</div>
+      <div class="lxen">→ digital learning designer · e-learning developer</div>
+    </div>
+    <div class="lxcard">
+      <div class="lxword">plurilingue</div>
+      <div class="lxpron">/ ply.ʁi.lɛ̃ɡ /</div>
+      <div class="lxpos">adjectif</div>
+      <div class="lxdef">Hindi (langue maternelle) · Anglais C2 (IELTS) · Français C1 (DALF). Capacité à concevoir, enseigner et collaborer à travers des cultures et des langues différentes. Vécue entre l'Inde et la France.</div>
+      <div class="lxen">→ plurilingual · multilingual · trilingue</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RATING ============ -->
+<section id="rating">
+  <div class="sl" data-fr="Votre retour" data-en="Your feedback">Votre retour</div>
+  <h2 class="st"><span data-fr="Évaluez ce" data-en="Rate this">Évaluez ce</span> <i>portfolio</i></h2>
+  <p class="rat-sub" data-fr="Votre retour compte. Même les étoiles solitaires." data-en="Your feedback matters. Even the lonely stars.">Votre retour compte. Même les étoiles solitaires.</p>
+  <div id="starsRow">
+    <button class="star-btn" onclick="rate(1)">⭐</button>
+    <button class="star-btn" onclick="rate(2)">⭐</button>
+    <button class="star-btn" onclick="rate(3)">⭐</button>
+    <button class="star-btn" onclick="rate(4)">⭐</button>
+    <button class="star-btn" onclick="rate(5)">⭐</button>
+  </div>
+  <p id="ratMsg" data-fr="Cliquez sur une étoile ✨" data-en="Click a star ✨">Cliquez sur une étoile ✨</p>
+  <textarea class="rat-ta" id="ratTa" placeholder="..."></textarea>
+  <button class="btn btn-p" onclick="submitRating()" data-fr="Envoyer →" data-en="Send →">Envoyer →</button>
+  <p id="ratDone" data-fr="Merci ! 🌸 Maintenant, la vraie question : on travaille ensemble ? ↓" data-en="Thank you! 🌸 Now the real question: shall we work together? ↓">Merci ! 🌸 Maintenant, la vraie question : on travaille ensemble ? ↓</p>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="sl" data-fr="Travaillons ensemble" data-en="Let's work together">Travaillons ensemble</div>
+    <h2 class="st"><span data-fr="Construisons quelque chose" data-en="Let's build something">Construisons quelque chose</span> <i data-fr="d'inoubliable." data-en="memorable.">d'inoubliable.</i></h2>
+    <p id="contactSub">Ouverte aux postes d'ingénierie pédagogique, digital learning et conception e-learning — corporate et académique. Disponible mi-septembre 2026. Télétravail et mobilité France.</p>
+    <div class="clinks">
+      <a class="btn btn-p" href="mailto:richac370@gmail.com">✉ richac370@gmail.com</a>
+      <a class="btn btn-g" href="https://linkedin.com/in/richachoudhary" target="_blank" rel="noopener">LinkedIn →</a>
+      <a class="btn btn-o" href="tel:+330759538989">📞 07 59 53 89 89</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="l1">© 2026 <b>Richa Choudhary</b> · <span data-fr="Ingénieure Pédagogique & Conceptrice Numérique" data-en="Instructional Designer & Digital Learning Designer">Ingénieure Pédagogique &amp; Conceptrice Numérique</span> · Laval, France</p>
+  <p class="l2">Disponible sept. 2026 · richac370@gmail.com · New Delhi → Orléans → Rennes → ऋचा चौधरी</p>
+</footer>
+
+<!-- ============ SEARCH OVERLAY ============ -->
+<div id="search-ov" onclick="if(event.target===this)closeSearch()">
+  <div class="search-card">
+    <input id="searchInput" placeholder="Rechercher une compétence, un projet, un outil…" oninput="runSearch(this.value)" onkeydown="searchKey(event)">
+    <div id="searchResults"></div>
+  </div>
+</div>
+
+<!-- ============ MODULE POPUP ============ -->
+<div id="mod-popup" onclick="if(event.target===this)closeModule()">
+  <div class="mod-card">
+    <button class="mod-x" onclick="closeModule()">✕</button>
+    <h3 id="mod-title"></h3>
+    <p id="mod-desc"></p>
+    <div id="mod-tags"></div>
+  </div>
+</div>
+
+<!-- ============ CHATBOT (HTML before script) ============ -->
+<button id="cb-btn" onclick="toggleChat()" title="Chat">💬</button>
+<div id="cb-panel">
+  <div class="cb-head">
+    <div><h4>Portfolio de Richa ✦</h4><span data-fr="Questions fréquentes" data-en="Frequent questions">Questions fréquentes</span></div>
+    <button class="cb-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="cb-body" id="cbBody">
+    <div class="bubble bot">Bonjour ! Je suis Richa. Choisissez une question ou écrivez la vôtre. 🌸</div>
+    <div class="cb-quick">
+      <button class="cqb" onclick="quickQ(this)">Pourquoi vous recruter ?</button>
+      <button class="cqb" onclick="quickQ(this)">Quand pouvez-vous commencer ?</button>
+      <button class="cqb" onclick="quickQ(this)">Parlez-moi de votre MOOC</button>
+      <button class="cqb" onclick="quickQ(this)">Quels outils maîtrisez-vous ?</button>
+    </div>
+  </div>
+  <div class="cb-foot">
+    <input class="cb-inp" id="cbInp" placeholder="Votre question…" onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="cb-send" onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:6.5rem;right:2rem;width:38px;height:38px;border-radius:50%;background:var(--sable);border:1px solid rgba(42,24,16,0.15);color:var(--tm);cursor:pointer;font-size:0.85rem;display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(42,24,16,0.1);z-index:400">↑</button>
+
+<script>
+/* Graceful fallback: if IntersectionObserver is unavailable (very old browsers),
+   reveal observed elements immediately so content is never hidden. */
+if (typeof window.IntersectionObserver === 'undefined') {
+  window.IntersectionObserver = function(cb) {
+    return {
+      observe: function(el) {
+        try { cb([{ isIntersecting: true, target: el }], this); } catch (e) {}
+      },
+      unobserve: function() {},
+      disconnect: function() {}
+    };
+  };
+}
+
+var CONFIG = {
+  googleFormUrl:  'https://forms.gle/YOUR_FORM_ID',
+  driveUrl:       'https://drive.google.com/YOUR_DRIVE_FOLDER',
+  diplomeM2:      'DRIVE_DIPLOME_MASTER2_RENNES2',
+  diplomeMA:      'DRIVE_DIPLOME_MASTER_ARTS_DELHI',
+  diplomeLicence: 'DRIVE_DIPLOME_LICENCE_DELHI',
+  diplomeGNIIT:   'DRIVE_DIPLOME_GNIIT',
+  diplomeDalf:    'DRIVE_DIPLOME_DALF_AVANCE',
+  youtubeBeyond:  'https://youtu.be/5BLCDJ1a7mc?si=C5TZB0mARBVTtOqb',
+  canvaPeople:    'https://canva.link/ll189agj11aan0x',
+  canvaPecha:     'https://canva.link/ft1iignofyzp8ez',
+  parcoursHumour: 'https://canva.link/4ywi9agwlgodvok',
+  mddlrUrl:       'https://mddlr2.hypotheses.org/8785',
+  podcastUrl:     'https://canva.link/ze0lvj7qeb9otur'
+};
+
+var currentLang = 'fr';
+
+/* ---------- TRANSLATION ---------- */
+var heroEyebrowText = {
+  fr: "Ingénieure Pédagogique · Conceptrice Numérique · Développement Digital Learning",
+  en: "Instructional Designer · Digital Learning Developer · E-Learning Development"
+};
+var heroDescText = {
+  fr: "Conception de modules e-learning de A à Z — serious games, formations métiers, digitalisation et modernisation de formations. Master 2 Ingénierie Pédagogique · Rennes 2 · 7 ans d'enseignement en deux pays, trois langues.",
+  en: "End-to-end e-learning design — serious games, vocational training, digitalisation and modernisation of learning programmes. Master's in Instructional Design · Rennes 2 · 7 years teaching across India and France."
+};
+var contactSubText = {
+  fr: "Ouverte aux postes d'ingénierie pédagogique, digital learning et conception e-learning — corporate et académique. Disponible mi-septembre 2026. Télétravail et mobilité France.",
+  en: "Open to instructional design, digital learning and e-learning positions — corporate and academic. Available mid-September 2026. Remote and mobility across France."
+};
+var cbWelcome = {
+  fr: "Bonjour ! Je suis Richa. Choisissez une question ou écrivez la vôtre. 🌸",
+  en: "Hello! I'm Richa. Pick a question or write your own. 🌸"
+};
+
+function toggleLang() {
+  currentLang = currentLang === 'fr' ? 'en' : 'fr';
+  document.getElementById('langBtn').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll('[data-fr][data-en]').forEach(function(el) {
+    el.textContent = el.getAttribute('data-' + currentLang);
+  });
+  document.querySelectorAll('[data-fr-html][data-en-html]').forEach(function(el) {
+    el.innerHTML = el.getAttribute('data-' + currentLang + '-html');
+  });
+  document.getElementById('heroEyebrow').textContent = heroEyebrowText[currentLang];
+  document.getElementById('heroDesc').textContent = heroDescText[currentLang];
+  document.getElementById('contactSub').textContent = contactSubText[currentLang];
+  document.getElementById('about-fr').style.display = currentLang === 'fr' ? 'block' : 'none';
+  document.getElementById('about-en').style.display = currentLang === 'en' ? 'block' : 'none';
+  document.querySelectorAll('.atab').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.atab').forEach(function(b) {
+    if (b.textContent.toLowerCase() === currentLang) { b.classList.add('active'); }
+  });
+  var firstBot = document.querySelector('#cbBody .bubble.bot');
+  if (firstBot) { firstBot.textContent = cbWelcome[currentLang]; }
+  var rm = document.getElementById('ratMsg');
+  if (curRating === 0) { rm.textContent = currentLang === 'fr' ? 'Cliquez sur une étoile ✨' : 'Click a star ✨'; }
+}
+
+/* ---------- ABOUT TABS ---------- */
+function toggleAbout(lang, btn) {
+  document.querySelectorAll('.atab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('about-fr').style.display = lang === 'fr' ? 'block' : 'none';
+  document.getElementById('about-en').style.display = lang === 'en' ? 'block' : 'none';
+}
+
+/* ---------- MENU ---------- */
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamb').classList.toggle('open');
+}
+document.querySelectorAll('#navLinks a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.getElementById('navLinks').classList.remove('open');
+    document.getElementById('hamb').classList.remove('open');
+  });
+});
+
+/* ---------- CONFIG LINK OPENERS ---------- */
+function openCfg(key) {
+  var url = CONFIG[key];
+  if (url && url.indexOf('_') === -1 && url.indexOf('http') === 0) { window.open(url, '_blank'); }
+  else { window.alert(currentLang === 'fr' ? 'Lien à venir.' : 'Link coming soon.'); }
+}
+function openDrive() {
+  if (CONFIG.driveUrl && CONFIG.driveUrl.indexOf('http') === 0) { window.open(CONFIG.driveUrl, '_blank'); }
+  else { window.alert(currentLang === 'fr' ? 'Dossier à venir.' : 'Folder coming soon.'); }
+}
+
+/* ---------- PROGRESS BAR + NAV SHADOW ---------- */
+window.addEventListener('scroll', function() {
+  var st = window.scrollY || document.documentElement.scrollTop;
+  var h = document.documentElement.scrollHeight - window.innerHeight;
+  var pct = h > 0 ? Math.min(st / h * 100, 100) : 0;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  var nav = document.getElementById('mainNav');
+  if (st > 60) { nav.classList.add('scrolled'); } else { nav.classList.remove('scrolled'); }
+  var stb = document.getElementById('scrollTopBtn');
+  stb.style.display = st > 500 ? 'flex' : 'none';
+});
+
+/* ---------- CUSTOM CURSOR ---------- */
+(function() {
+  if (window.matchMedia && window.matchMedia('(pointer:coarse)').matches) { return; }
+  var cur = document.getElementById('cursor');
+  var ring = document.getElementById('cursor-ring');
+  if (!cur || !ring) { return; }
+  var mx = window.innerWidth / 2, my = window.innerHeight / 2;
+  var rx = mx, ry = my;
+  document.addEventListener('mousemove', function(e) {
+    mx = e.clientX; my = e.clientY;
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  });
+  function loop() {
+    rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    window.requestAnimationFrame(loop);
+  }
+  loop();
+})();
+
+/* ---------- HERO NAME ANIMATION ---------- */
+(function() {
+  var el = document.getElementById('heroFirst');
+  if (!el) { return; }
+  var showingHindi = true;
+  window.setTimeout(function() {
+    el.style.opacity = '0';
+    window.setTimeout(function() {
+      el.textContent = 'Richa';
+      el.style.opacity = '1';
+      showingHindi = false;
+    }, 350);
+  }, 2000);
+  el.addEventListener('mouseenter', function() {
+    var next = showingHindi ? 'Richa' : '\u090b\u091a\u093e';
+    el.style.opacity = '0';
+    window.setTimeout(function() {
+      el.textContent = next;
+      el.style.opacity = '1';
+      showingHindi = !showingHindi;
+    }, 200);
+  });
+})();
+
+/* ---------- HERO PARALLAX ---------- */
+(function() {
+  if (window.matchMedia && window.matchMedia('(pointer:coarse)').matches) { return; }
+  var stack = document.getElementById('cardStack');
+  if (!stack) { return; }
+  window.addEventListener('mousemove', function(e) {
+    var rx = (e.clientX / window.innerWidth - 0.5) * 12;
+    var ry = (e.clientY / window.innerHeight - 0.5) * 8;
+    stack.style.transform = 'perspective(800px) rotateY(' + rx + 'deg) rotateX(' + (-ry) + 'deg)';
+  });
+})();
+
+/* ---------- TIMELINE FILTER + REVEAL ---------- */
+function filterExp(year, btn) {
+  document.querySelectorAll('.eyb').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.tli').forEach(function(el) {
+    var show = (year === 'all') || (el.getAttribute('data-year') === year);
+    el.style.display = show ? 'block' : 'none';
+    if (show) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateX(0)';
+    }
+  });
+}
+(function() {
+  var items = document.querySelectorAll('.tli');
+  if (!items.length) { return; }
+  var tObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (en.isIntersecting) {
+        en.target.style.opacity = '1';
+        en.target.style.transform = 'translateX(0)';
+        tObs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.04, rootMargin: '0px 0px 120px 0px' });
+  items.forEach(function(it) { tObs.observe(it); });
+})();
+
+/* ---------- GALLERY (built in JS) ---------- */
+(function() {
+  var imgs = [
+    ['g01.jpeg', 'Renoir · Musée d\'Orsay', 'fb-gold', '🌸'],
+    ['g02.jpeg', 'Victoire de Samothrace · Louvre', 'fb-dark', '🏛️'],
+    ['g03.jpeg', 'Le Penseur · Rodin', 'fb-rose', '💭'],
+    ['g04.jpeg', 'Coucher de soleil · Istanbul', 'fb-gold', '🌅'],
+    ['g05.jpeg', 'Van Gogh · La Nuit étoilée sur le Rhône', 'fb-dark', '⭐'],
+    ['g06.jpeg', 'Hagia Sophia · Istanbul', 'fb-rose', '🕌'],
+    ['g07.jpeg', 'Pique-nique · Paris', 'fb-gold', '🧺'],
+    ['g08.jpeg', 'Nymphéas · Monet · Orangerie', 'fb-dark', '🪷'],
+    ['g09.jpeg', 'Danseuse bleue · Degas', 'fb-rose', '🩰'],
+    ['g10.jpeg', 'Goya · Portrait souriant', 'fb-gold', '😊'],
+    ['g11.jpeg', 'Cappadoce · Turquie', 'fb-dark', '🪨'],
+    ['g12.jpeg', 'Versailles · Salon de porcelaine', 'fb-rose', '🏺']
+  ];
+  var rots = [-1.5, 1.2, -0.6, 2, -1.1, 0.8, -1.8, 1.4, -0.4, 1.8, -0.9, 1.1];
+  var wall = document.getElementById('gwall');
+  if (!wall) { return; }
+  var html = '';
+  for (var i = 0; i < imgs.length; i++) {
+    var f = imgs[i];
+    html += '<figure class="gframe" style="transform:rotate(' + rots[i] + 'deg)">'
+      + '<div class="fborder ' + f[2] + '">'
+      + '<img src="images/' + f[0] + '" alt="' + f[1] + '" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">'
+      + '<div class="gfb">' + f[3] + '</div>'
+      + '</div>'
+      + '</figure>';
+  }
+  wall.innerHTML = html;
+})();
+
+/* ---------- MODULE POPUP ---------- */
+var modData = [
+  { title: "Module 1 — Discover",
+    desc: "Jeux et questions pour découvrir le vocabulaire de la sécurité incendie. Mise en ambiance, mots-clés essentiels, activités H5P interactives.",
+    tags: ["H5P", "Vocabulaire B2", "Fire Safety", "Jeux"] },
+  { title: "Module 2 — Understand",
+    desc: "Les différents types de feux, les extincteurs, et une formation courte à leur utilisation. Vidéos, activités et révision des verbes modaux.",
+    tags: ["Types de feux", "Extincteurs", "Verbes modaux", "Storyline"] },
+  { title: "Module 3 — Apply",
+    desc: "Escape game dans un musée virtuel + simulation d'appel d'urgence par IA. L'apprenant apprend le protocole RACE en situation réelle.",
+    tags: ["Escape Game", "Simulation IA", "Gamification", "Storyline"] },
+  { title: "Module 4 — Analyse",
+    desc: "Témoignages de survivants à travers les 3e conditionnels. Compréhension orale et grammaire en contexte authentique.",
+    tags: ["3e conditionnel", "Témoignages", "Grammaire B2", "H5P"] },
+  { title: "Module 5 — Evaluate",
+    desc: "Mission-jeu finale sur carte interactive. Quiz et activités d'évaluation, bilan du parcours, badge et certificat.",
+    tags: ["Mission finale", "Évaluation", "Badge", "Certificat"] }
+];
+function openModule(i) {
+  var m = modData[i];
+  if (!m) { return; }
+  document.getElementById('mod-title').textContent = m.title;
+  document.getElementById('mod-desc').textContent = m.desc;
+  var tg = document.getElementById('mod-tags');
+  tg.innerHTML = '';
+  m.tags.forEach(function(t) {
+    var s = document.createElement('span');
+    s.textContent = t;
+    tg.appendChild(s);
+  });
+  document.getElementById('mod-popup').classList.add('open');
+}
+function closeModule() {
+  document.getElementById('mod-popup').classList.remove('open');
+}
+
+/* ---------- RATING ---------- */
+var curRating = 0;
+var ratMsgsFR = ["",
+  "J'ai repris une formation présentielle de zéro en six semaines. Les défis, j'aime ça. Parlons-en.",
+  "J'ai transformé un PDF en bibliothèque vidéo et un jeu en serious game. Un jury difficile, c'est un autre brief. On en parle.",
+  "Un retour honnête est la première étape d'une bonne conception. Discutons.",
+  "Quatre sur cinq, ça me va. Il reste une raison de discuter. Parlons-en.",
+  "Excellent jugement — c'est exactement ce niveau d'attention que j'apporte à chaque module. Contactez-moi."
+];
+var ratMsgsEN = ["",
+  "I rebuilt an in-person training from scratch in six weeks. A tough crowd is just another brief. Let's talk.",
+  "I turned a PDF into a video library and a board game into a serious game. A hard room is just a design challenge.",
+  "Honest feedback is the first step of good design. Let's discuss.",
+  "Four out of five works. There's still one reason to talk — I'd love to know what it is.",
+  "Excellent judgement — that's exactly the level of attention I bring to every module. Reach out."
+];
+function rate(n) {
+  curRating = n;
+  document.querySelectorAll('.star-btn').forEach(function(btn, idx) {
+    if (idx < n) { btn.classList.add('lit'); } else { btn.classList.remove('lit'); }
+  });
+  var msgs = currentLang === 'fr' ? ratMsgsFR : ratMsgsEN;
+  document.getElementById('ratMsg').textContent = msgs[n];
+}
+function submitRating() {
+  if (curRating === 0) {
+    window.alert(currentLang === 'fr' ? 'Choisissez une note !' : 'Pick a rating!');
+    return;
+  }
+  if (CONFIG.googleFormUrl && CONFIG.googleFormUrl.indexOf('http') === 0) {
+    window.open(CONFIG.googleFormUrl, '_blank');
+  }
+  document.getElementById('starsRow').style.display = 'none';
+  document.getElementById('ratMsg').style.display = 'none';
+  document.getElementById('ratTa').style.display = 'none';
+  document.querySelector('#rating .btn-p').style.display = 'none';
+  document.getElementById('ratDone').style.display = 'block';
+  window.setTimeout(function() {
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }, 1800);
+}
+
+/* ---------- SEARCH ---------- */
+var searchIndex = [
+  { t: "À propos · Qui suis-je", s: "Ingénieure pédagogique entre Delhi et Rennes, 7 ans d'enseignement", id: "apropos" },
+  { t: "Compétences & outils", s: "ADDIE SAM Bloom Gagné scaffolding Mayer méthodologies", id: "constellation" },
+  { t: "Outils d'auteur", s: "Articulate Storyline 360 Rise H5P Vyond Genially Canva Wix", id: "constellation" },
+  { t: "LMS & SCORM", s: "Moodle WorkAdventure BlendedX SCORM suivi apprenants", id: "constellation" },
+  { t: "Vidéo & production", s: "Adobe Premiere Firefly Filmora Audacity montage vidéo pédagogique", id: "constellation" },
+  { t: "Parcours · Lactalis GPO", s: "Stage digitalisation formation qualité SCORM Storyline gamification", id: "experiences" },
+  { t: "Parcours · Enseignement FLE", s: "Language Avenue Bréquigny Gérard Philipe Le FreHindi e-learning distance", id: "experiences" },
+  { t: "Formation · Master 2 Rennes 2", s: "Didactique des langues Numérique Ingénierie Pédagogique FLE ALE", id: "formation" },
+  { t: "MOOC · Responding to Fire", s: "5 modules 69 apprenants 4.7/5 escape game simulation urgence IA H5P", id: "portfolio" },
+  { t: "Réalisations · Projets", s: "Audit qualité SCORM télécollaboration Beyond Binary People Please podcast", id: "portfolio" },
+  { t: "Profil pour recruteurs", s: "CDI CDD alternance disponible septembre 2026 télétravail mobilité France", id: "profil-ref" },
+  { t: "Galerie · Art of the Ordinary", s: "interculturel mobilité Inde France sensibilité visuelle design", id: "gallery" },
+  { t: "Lexique · FR EN", s: "instructional designer conceptrice numérique plurilingue terminologie", id: "lexique" },
+  { t: "Contact", s: "richac370@gmail.com LinkedIn téléphone disponible septembre 2026", id: "contact" }
+];
+var searchActive = -1;
+function openSearch() {
+  document.getElementById('search-ov').classList.add('open');
+  var inp = document.getElementById('searchInput');
+  inp.value = '';
+  runSearch('');
+  window.setTimeout(function() { inp.focus(); }, 80);
+}
+function closeSearch() {
+  document.getElementById('search-ov').classList.remove('open');
+}
+function runSearch(q) {
+  var res = document.getElementById('searchResults');
+  var query = q.trim().toLowerCase();
+  searchActive = -1;
+  var matches = searchIndex.filter(function(e) {
+    if (!query) { return true; }
+    return (e.t + ' ' + e.s).toLowerCase().indexOf(query) !== -1;
+  });
+  if (!matches.length) {
+    res.innerHTML = '<div class="sres"><span>' + (currentLang === 'fr' ? 'Aucun résultat' : 'No results') + '</span></div>';
+    return;
+  }
+  res.innerHTML = matches.map(function(e) {
+    var title = e.t, snip = e.s;
+    if (query) {
+      var re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      title = title.replace(re, '<mark>$1</mark>');
+      snip = snip.replace(re, '<mark>$1</mark>');
+    }
+    return '<div class="sres" data-id="' + e.id + '" onclick="goSearch(\'' + e.id + '\')"><b>' + title + '</b><span>' + snip + '</span></div>';
+  }).join('');
+}
+function goSearch(id) {
+  closeSearch();
+  var el = document.getElementById(id);
+  if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+}
+function searchKey(e) {
+  var items = document.querySelectorAll('#searchResults .sres');
+  if (!items.length) { return; }
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    searchActive = Math.min(searchActive + 1, items.length - 1);
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    searchActive = Math.max(searchActive - 1, 0);
+  } else if (e.key === 'Enter') {
+    if (searchActive >= 0 && items[searchActive]) {
+      goSearch(items[searchActive].getAttribute('data-id'));
+    } else if (items[0]) {
+      goSearch(items[0].getAttribute('data-id'));
+    }
+    return;
+  } else if (e.key === 'Escape') {
+    closeSearch();
+    return;
+  }
+  items.forEach(function(it, i) { it.classList.toggle('active', i === searchActive); });
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeSearch(); closeModule(); }
+});
+
+/* ---------- CHATBOT ---------- */
+var cbAnswers = {
+  "Pourquoi vous recruter ?": "7 ans de classe m'ont appris ce que les frameworks ne transmettent pas. MOOC : 4.7/5, escape game, simulation urgence IA. Parlons-en.",
+  "Quand pouvez-vous commencer ?": "Disponible mi-septembre 2026. CDI, CDD, alternance. Télétravail, mobilité France. richac370@gmail.com",
+  "Parlez-moi de votre MOOC": "\"Responding to Fire\" — 5 modules B2 anglais : Discover, Understand, Apply, Analyse, Evaluate. Escape game musée, simulation urgence IA, badge & certificat. 69 apprenants, Moodle Rennes 2.",
+  "Quels outils maîtrisez-vous ?": "Storyline 360 & Rise, H5P, Vyond, Genially, Canva, Moodle, BlendedX, Adobe Premiere & Firefly, Filmora, Audacity. Et IA générative intégrée dans tout le workflow."
+};
+function toggleChat() {
+  document.getElementById('cb-panel').classList.toggle('open');
+}
+function addBubble(text, who) {
+  var b = document.createElement('div');
+  b.className = 'bubble ' + who;
+  b.textContent = text;
+  var body = document.getElementById('cbBody');
+  body.appendChild(b);
+  body.scrollTop = body.scrollHeight;
+}
+function quickQ(btn) {
+  var q = btn.textContent;
+  btn.classList.add('used');
+  addBubble(q, 'user');
+  var a = cbAnswers[q] || "Bonne question — écrivez-moi à richac370@gmail.com et j'y réponds avec plaisir.";
+  window.setTimeout(function() { addBubble(a, 'bot'); }, 350);
+}
+function sendChat() {
+  var inp = document.getElementById('cbInp');
+  var q = inp.value.trim();
+  if (!q) { return; }
+  addBubble(q, 'user');
+  inp.value = '';
+  var a = cbAnswers[q];
+  if (!a) {
+    a = currentLang === 'fr'
+      ? "Merci pour votre message ! Pour une réponse détaillée, écrivez-moi à richac370@gmail.com."
+      : "Thank you for your message! For a detailed reply, email me at richac370@gmail.com.";
+  }
+  window.setTimeout(function() { addBubble(a, 'bot'); }, 350);
+}
+
+/* ---------- CONSTELLATION ---------- */
+(function() {
+  var canvas = document.getElementById('constellationCanvas');
+  if (!canvas) { return; }
+  var tip = document.getElementById('starTooltip');
+  var sN = document.getElementById('starName');
+  var sD = document.getElementById('starDesc');
+  var sL = document.getElementById('starLevel');
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0;
+  var dpr = window.devicePixelRatio || 1;
+  var hover = null, raf = null, tick = 0, ready = false;
+
+  var nodes = [
+    { id: 'ip', label: 'Ingénierie\nPédagogique', desc: "Conception de A a Z : analyse, scenarisation, production, deploiement LMS.", lev: "Coeur de metier", x: 0.50, y: 0.50, r: 22, col: '#F5C842', pulse: true },
+    { id: 'addie', label: 'ADDIE', desc: "Analyze-Design-Develop-Implement-Evaluate. Applique a chaque projet.", lev: "Expert", x: 0.30, y: 0.22, r: 12, col: '#EFC0BC' },
+    { id: 'sam', label: 'SAM', desc: "Successive Approximation Model. Iteratif et agile.", lev: "Avance", x: 0.70, y: 0.22, r: 11, col: '#EFC0BC' },
+    { id: 'bloom', label: 'Bloom', desc: "Taxonomie des objectifs — 6 niveaux cognitifs.", lev: "Expert", x: 0.76, y: 0.72, r: 12, col: '#EFC0BC' },
+    { id: 'gagne', label: 'Gagné', desc: "9 evenements d instruction pour structurer une sequence.", lev: "Avance", x: 0.24, y: 0.72, r: 11, col: '#EFC0BC' },
+    { id: 'scaf', label: 'Scaffolding', desc: "Etayage progressif — soutien retire au fur et a mesure.", lev: "Expert", x: 0.14, y: 0.46, r: 9, col: '#EFC0BC' },
+    { id: 'mayer', label: 'Mayer', desc: "Principes multimedia — reduire la charge cognitive.", lev: "Avance", x: 0.86, y: 0.46, r: 9, col: '#EFC0BC' },
+    { id: 'stl', label: 'Storyline', desc: "Articulate Storyline 360 — modules SCORM interactifs.", lev: "Confirme", x: 0.18, y: 0.10, r: 12, col: '#A0AB88' },
+    { id: 'rise', label: 'Rise', desc: "Articulate Rise — parcours responsive sur Moodle.", lev: "Confirme", x: 0.38, y: 0.06, r: 10, col: '#A0AB88' },
+    { id: 'h5p', label: 'H5P', desc: "Quiz, drag-drop, flashcards, dialogues interactifs.", lev: "Confirme", x: 0.62, y: 0.06, r: 10, col: '#A0AB88' },
+    { id: 'vyond', label: 'Vyond', desc: "Animation pedagogique — videos engageantes.", lev: "Confirme", x: 0.82, y: 0.10, r: 10, col: '#A0AB88' },
+    { id: 'geni', label: 'Genially', desc: "Presentations et infographies interactives.", lev: "Confirme", x: 0.93, y: 0.28, r: 9, col: '#A0AB88' },
+    { id: 'canva', label: 'Canva', desc: "Design visuel et supports pedagogiques.", lev: "Avance", x: 0.95, y: 0.52, r: 9, col: '#A0AB88' },
+    { id: 'wix', label: 'Wix', desc: "Sites web pedagogiques et espaces apprenants.", lev: "Confirme", x: 0.89, y: 0.76, r: 8, col: '#A0AB88' },
+    { id: 'moodle', label: 'Moodle', desc: "LMS — SCORM, suivi apprenants, gestion parcours.", lev: "Avance", x: 0.62, y: 0.94, r: 12, col: '#5E8A7B' },
+    { id: 'blend', label: 'BlendedX', desc: "LMS blended learning — parcours hybrides.", lev: "Confirme", x: 0.38, y: 0.94, r: 9, col: '#5E8A7B' },
+    { id: 'worka', label: 'WorkAdventure', desc: "LMS immersif en monde virtuel.", lev: "Confirme", x: 0.16, y: 0.82, r: 9, col: '#5E8A7B' },
+    { id: 'prem', label: 'Premiere', desc: "Adobe Premiere — montage video pedagogique.", lev: "Confirme", x: 0.06, y: 0.62, r: 10, col: '#C9A84C' },
+    { id: 'fire', label: 'Firefly', desc: "Adobe Firefly — IA generative pour visuels.", lev: "En cours", x: 0.04, y: 0.38, r: 9, col: '#C9A84C' },
+    { id: 'film', label: 'Filmora', desc: "Edition video rapide.", lev: "Confirme", x: 0.07, y: 0.18, r: 9, col: '#C9A84C' },
+    { id: 'gamif', label: 'Gamification', desc: "Escape games, progression maps, badges — MOOC Responding to Fire.", lev: "Expert", x: 0.25, y: 0.33, r: 12, col: '#E8A020' },
+    { id: 'mooc', label: 'MOOC', desc: "Responding to Fire — 5 modules, 69 apprenants, 4.7/5.", lev: "Realise", x: 0.75, y: 0.33, r: 12, col: '#E8A020' },
+    { id: 'ia', label: 'IA générative', desc: "Integree dans tout le workflow de conception.", lev: "En cours", x: 0.75, y: 0.66, r: 10, col: '#E8A020' },
+    { id: 'inter', label: 'Interculturel', desc: "Inde, France, USA — 3 langues, 2 continents.", lev: "Vecu", x: 0.25, y: 0.66, r: 10, col: '#E8A020' }
+  ];
+  var edges = [
+    ['ip', 'addie'], ['ip', 'sam'], ['ip', 'bloom'], ['ip', 'gagne'], ['ip', 'scaf'], ['ip', 'mayer'],
+    ['ip', 'stl'], ['ip', 'h5p'], ['ip', 'moodle'], ['ip', 'gamif'], ['ip', 'mooc'], ['ip', 'ia'], ['ip', 'inter'],
+    ['addie', 'sam'], ['bloom', 'gagne'], ['stl', 'rise'], ['h5p', 'rise'],
+    ['stl', 'gamif'], ['stl', 'mooc'], ['h5p', 'mooc'], ['vyond', 'ia'],
+    ['moodle', 'mooc'], ['moodle', 'blend'], ['moodle', 'worka'],
+    ['geni', 'canva'], ['canva', 'fire'], ['prem', 'film'], ['prem', 'fire'],
+    ['addie', 'gamif'], ['sam', 'ia'], ['bloom', 'inter'], ['gagne', 'inter'],
+    ['gamif', 'mooc'], ['scaf', 'inter'], ['worka', 'blend'], ['wix', 'canva'], ['fire', 'ia']
+  ];
+  function nodeById(id) {
+    for (var i = 0; i < nodes.length; i++) { if (nodes[i].id === id) { return nodes[i]; } }
+    return null;
+  }
+  function rgb(hex) {
+    return parseInt(hex.slice(1, 3), 16) + ',' + parseInt(hex.slice(3, 5), 16) + ',' + parseInt(hex.slice(5, 7), 16);
+  }
+  function px(node) {
+    return { x: node.x * W, y: node.y * H, r: node.r * dpr };
+  }
+  function resize() {
+    var w = Math.min(canvas.parentElement.offsetWidth - 20, 960);
+    var ht = Math.round(w * (window.innerWidth < 600 ? 0.9 : 0.62));
+    canvas.width = w * dpr;
+    canvas.height = ht * dpr;
+    canvas.style.width = w + 'px';
+    canvas.style.height = ht + 'px';
+    W = canvas.width; H = canvas.height;
+  }
+  function draw() {
+    if (!ready) { return; }
+    tick += 0.018;
+    ctx.clearRect(0, 0, W, H);
+    var i, bx, by, op;
+    for (i = 0; i < 50; i++) {
+      bx = ((i * 137.5) % 1) * W;
+      by = ((i * 97.3) % 1) * H;
+      op = 0.06 + 0.04 * Math.sin(tick + i * 0.7);
+      ctx.beginPath();
+      ctx.arc(bx, by, 0.7 * dpr, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(245,200,66,' + op + ')';
+      ctx.fill();
+    }
+    for (i = 0; i < edges.length; i++) {
+      var a = nodeById(edges[i][0]);
+      var b = nodeById(edges[i][1]);
+      if (!a || !b) { continue; }
+      var pa = px(a), pb = px(b);
+      var lit = hover && (hover.id === a.id || hover.id === b.id);
+      ctx.beginPath();
+      ctx.moveTo(pa.x, pa.y);
+      ctx.lineTo(pb.x, pb.y);
+      if (lit) {
+        ctx.strokeStyle = 'rgba(245,200,66,0.65)';
+        ctx.lineWidth = 1.6 * dpr;
+      } else {
+        ctx.strokeStyle = 'rgba(200,180,150,' + (0.1 + 0.04 * Math.sin(tick * 0.4)) + ')';
+        ctx.lineWidth = 0.7 * dpr;
+      }
+      ctx.stroke();
+    }
+    for (i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      var p = px(n);
+      var isHovered = hover && hover.id === n.id;
+      var isConnected = false;
+      if (hover) {
+        for (var e = 0; e < edges.length; e++) {
+          if ((edges[e][0] === hover.id && edges[e][1] === n.id) || (edges[e][1] === hover.id && edges[e][0] === n.id)) {
+            isConnected = true; break;
+          }
+        }
+      }
+      var r = p.r;
+      if (n.pulse) { r *= (1 + 0.07 * Math.sin(tick * 1.6)); }
+      if (isHovered) { r *= 1.42; }
+      if (isHovered || n.pulse) {
+        var grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.2);
+        grd.addColorStop(0, 'rgba(' + rgb(n.col) + ',0.5)');
+        grd.addColorStop(1, 'rgba(' + rgb(n.col) + ',0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r * 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+      }
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      var alpha = isHovered ? 1 : (isConnected ? 0.88 : 0.5);
+      ctx.fillStyle = 'rgba(' + rgb(n.col) + ',' + alpha + ')';
+      ctx.fill();
+      if (isHovered || isConnected) {
+        ctx.lineWidth = 1.5 * dpr;
+        ctx.strokeStyle = 'rgba(' + rgb(n.col) + ',0.9)';
+        ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(250,247,242,' + (isHovered ? 1 : 0.75) + ')';
+      ctx.font = (isHovered ? 11 : 9) * dpr + "px 'DM Sans', sans-serif";
+      ctx.textAlign = 'center';
+      var ly = p.y + r + 12 * dpr;
+      if (n.label.indexOf('\n') !== -1) {
+        var lines = n.label.split('\n');
+        for (var L = 0; L < lines.length; L++) {
+          ctx.fillText(lines[L], p.x, ly + L * 10 * dpr);
+        }
+      } else {
+        ctx.fillText(n.label, p.x, ly);
+      }
+    }
+    raf = window.requestAnimationFrame(draw);
+  }
+  function findHover(clientX, clientY) {
+    var rect = canvas.getBoundingClientRect();
+    var mxp = (clientX - rect.left) * (W / rect.width);
+    var myp = (clientY - rect.top) * (H / rect.height);
+    for (var i = 0; i < nodes.length; i++) {
+      var p = px(nodes[i]);
+      var d = Math.sqrt((mxp - p.x) * (mxp - p.x) + (myp - p.y) * (myp - p.y));
+      if (d < nodes[i].r * dpr * 1.8) { return nodes[i]; }
+    }
+    return null;
+  }
+  function showTip(node, cx, cy) {
+    sN.textContent = node.label.replace('\n', ' ');
+    sD.textContent = node.desc;
+    sL.textContent = node.lev;
+    tip.style.opacity = '1';
+    tip.style.left = Math.min(cx + 15, window.innerWidth - 250) + 'px';
+    tip.style.top = Math.min(cy - 8, window.innerHeight - 165) + 'px';
+  }
+  canvas.addEventListener('mousemove', function(e) {
+    var found = findHover(e.clientX, e.clientY);
+    hover = found;
+    if (found) { showTip(found, e.clientX, e.clientY); canvas.style.cursor = 'pointer'; }
+    else { tip.style.opacity = '0'; canvas.style.cursor = 'default'; }
+  });
+  canvas.addEventListener('mouseleave', function() {
+    hover = null;
+    tip.style.opacity = '0';
+  });
+  canvas.addEventListener('touchstart', function(e) {
+    var t = e.touches[0];
+    var found = findHover(t.clientX, t.clientY);
+    hover = found;
+    if (found) { e.preventDefault(); showTip(found, t.clientX, t.clientY); }
+  }, { passive: false });
+  canvas.addEventListener('touchend', function() {
+    tip.style.opacity = '0';
+    hover = null;
+  });
+  function start() {
+    resize();
+    ready = true;
+    if (raf) { window.cancelAnimationFrame(raf); }
+    draw();
+  }
+  var cIO = new IntersectionObserver(function(entries) {
+    entries.forEach(function(en) {
+      if (en.isIntersecting) { start(); cIO.unobserve(en.target); }
+    });
+  }, { threshold: 0.05 });
+  cIO.observe(canvas);
+  window.addEventListener('resize', function() { if (ready) { resize(); } });
+})();
+</script>
+</body>
+</html>
